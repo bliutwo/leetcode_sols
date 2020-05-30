@@ -1,1 +1,11 @@
 *.out
+*.exe
+CMakeCache.txt
+CMakeFiles/
+Makefile
+bin/
+*.cmake
+googletest-build/
+googletest-download/
+googletest-src/
+lib/
