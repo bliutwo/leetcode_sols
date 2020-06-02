@@ -10,9 +10,7 @@ string freqAlphabets(string s) {
     string alphabet = "abcdefghijklmnopqrstuvwxyz";
     for (size_t i = 0; i < s.length(); i++) {
         if (s[i] != '#') {
-            string character = "";
-            character += s[i];
-            int index = stoi(character);
+            int index = s[i] - '0';
             answer += alphabet[index - 1];
         } else {
             answer.erase(answer.length() - 1);
