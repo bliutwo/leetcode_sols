@@ -339,3 +339,15 @@ for (size_t len = 1; len <= S.length(); len++)
 ```cpp
 int i = atoi(&c);
 ```
+
+- store subvector of *v1* into *v2* from index *i* to *j*
+
+```cpp
+vector<int> v2(v1.begin() + i, v1.begin() + j);
+```
+
+- store max element from vector *v* into *x*
+
+```cpp
+auto x = *max_element(v.begin(), v.end());
+```
