@@ -18,6 +18,7 @@ Here are some things that I should know by heart:
 - ~~how to return absolute value of *x*~~ leetcode doesn't have `#include <cstdlib>`
 - convert an int to a string or a string to an int
 - convert a [char to an int](https://stackoverflow.com/questions/5029840/convert-char-to-int-in-c-and-c)
+  - looks like you can't do this on leetcode because you'll get a runtime error
 
 I'll insert a link to a set of flashcards at some point.
 
@@ -329,4 +330,12 @@ Alternatively,
 for (size_t len = 1; len <= S.length(); len++)
     for (size_t i = 0; i < S.length() - len + 1; i++)
         cout << S.substr(i, len) << endl;
+```
+
+- how many valid substrings are in a string with a single repeating character that repeats *n* times?
+
+- convert char *c* to int *i* (leetcode version)
+
+```cpp
+int i = atoi(&c);
 ```
