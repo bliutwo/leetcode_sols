@@ -2,6 +2,7 @@
 #include <set>
 using namespace std;
 
+// not optimal, takes a long time, O(n^2)
 int countLetters(string S) {
     int num_str{};
     set<string> m;
