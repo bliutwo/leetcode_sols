@@ -21,7 +21,7 @@ Here are some things that I should know by heart:
 
 I'll insert a link to a set of flashcards at some point.
 
-## 5/28-5/30
+## The rest
 
 - Insert integer *n* into vector *v* at index *i*, pushing the elements afterwards one index forward
 
