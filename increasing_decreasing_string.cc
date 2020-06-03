@@ -2,39 +2,38 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// DOESN'T WORK
 string sortString(string s) {
     string result = "";
-    map<char, int> m;
+    set<char> a_set;
     for (char c : s) {
-        if (m.find(c) == m.end()) {
-            m[c] = 0;
-        } else {
-            m[c] += 1;
-        }
+        a_set.insert(c);
     }
-    bool forward = true;
-    while (!m.empty()) {
-        if (forward) {
-            for (auto it = m.begin(); it != m.end(); it++) {
-                char key = it->first;
-                int val = it->second;
-                result += key;
-                m[key] -= 1;
-                if(m[key] == 0)
-                    m.erase(key);
+    while (true) {
+        for (auto it = a_set.begin(); it != a_set.end(); it++) {
+            size_t found = s.find(*it);
+            if (found == string::npos)
+                continue;
+            result += *it;
+            s.erase(found, 1);
+            if (s.empty()) {
+                break;
             }
-            forward ^= 1;
-        } else {
-            for (auto it = m.rbegin(); it != m.rend(); it++) {
-                char key = it->first;
-                int val = it->second;
-                result += key;
-                m[key] -= 1;
-                if(m[key] == 0)
-                    m.erase(key);
+        }
+        if (s.empty()) {
+            break;
+        }
+        for (auto it = a_set.rbegin(); it != a_set.rend(); it++) {
+            size_t found = s.rfind(*it);
+            if (found == string::npos)
+                continue;
+            result += *it;
+            s.erase(found, 1);
+            if (s.empty()) {
+                break;
             }
-            forward ^= 1;
+        }
+        if (s.empty()) {
+            break;
         }
     }
     return result;
