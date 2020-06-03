@@ -392,6 +392,12 @@ sort(v.begin(), v.end(), greater<int>());
 size_t i = s.find(c);
 ```
 
+- store into `size_t` *i* the last occurrence of char *c* in string *s*
+
+```cpp
+size_t i = s.rfind(c);
+```
+
 - given an integer *i* that is either 0 or 1, convert it to the other one (i.e. `0 -> 1` or `1 -> 0`)
 
 ```cpp
@@ -402,4 +408,22 @@ i ^= 1;
 
 ```cpp
 sort(s.begin(), s.end(), greater<char>());
+```
+
+- check if string *s* is empty
+
+```cpp
+if(s.empty())
+```
+
+- check if `s.find(c)` found nothing
+
+```cpp
+if (s.find(c) == string::npos)
+```
+
+- check if `s.find(c)` found something
+
+```cpp
+if (s.find(c) != string::npos)
 ```

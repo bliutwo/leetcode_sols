@@ -3,10 +3,40 @@
 using namespace std;
 
 string sortString(string s) {
-    string increasing = s;
-    string decreasing = s;
-    sort(increasing.begin(), increasing.end());
-    sort(decreasing.begin(), decreasing.end(), greater<char>());
+    string result = "";
+    set<char> a_set;
+    for (char c : s) {
+        a_set.insert(c);
+    }
+    while (true) {
+        for (auto it = a_set.begin(); it != a_set.end(); it++) {
+            size_t found = s.find(*it);
+            if (found == string::npos)
+                continue;
+            result += *it;
+            s.erase(found, 1);
+            if (s.empty()) {
+                break;
+            }
+        }
+        if (s.empty()) {
+            break;
+        }
+        for (auto it = a_set.rbegin(); it != a_set.rend(); it++) {
+            size_t found = s.rfind(*it);
+            if (found == string::npos)
+                continue;
+            result += *it;
+            s.erase(found, 1);
+            if (s.empty()) {
+                break;
+            }
+        }
+        if (s.empty()) {
+            break;
+        }
+    }
+    return result;
 }
 
 struct Test1 : ::testing::Test {

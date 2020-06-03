@@ -2,9 +2,9 @@
 using namespace std;
 
 int main() {
-    string s = "abcdefghijklmnop";
-    cout << s << endl;
-    sort(s.begin(), s.end(), greater<char>());
-    cout << s << endl;
+    string s = "bcds";
+    char c = 'a';
+    if (s.find(c) == string::npos)
+        cout << "wow" << endl;
     return 0;
 }
