@@ -427,3 +427,21 @@ if (s.find(c) == string::npos)
 ```cpp
 if (s.find(c) != string::npos)
 ```
+
+- check if key *k* is in map *m*
+
+```cpp
+if (m.find(k) != m.end())
+```
+
+- erase key *k* from map *m*
+
+```cpp
+m.erase(k);
+```
+
+- check if map *m* is empty
+
+```cpp
+if (m.empty())
+```

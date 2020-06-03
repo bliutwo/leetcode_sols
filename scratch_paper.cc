@@ -2,9 +2,13 @@
 using namespace std;
 
 int main() {
-    string s = "bcds";
-    char c = 'a';
-    if (s.find(c) == string::npos)
-        cout << "wow" << endl;
+    map<char, int> m = {{'a', 0}};
+    if (m.find('a') != m.end())
+        cout << "found" << endl;
+    m.erase('a');
+    if (m.empty())
+        cout << "empty" << endl;
+    if (m.find('a') == m.end())
+        cout << "not found" << endl;
     return 0;
 }
