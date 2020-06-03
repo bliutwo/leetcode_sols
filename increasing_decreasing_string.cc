@@ -3,33 +3,9 @@
 using namespace std;
 
 string sortString(string s) {
-    set<char> a_set;
-    for (char c : s) {
-        a_set.insert(c);
-    }
-    string result = "";
-    while (true) {
-        bool broken = false;
-        for (auto it = a_set.begin(); it != a_set.end(); it++) {
-            result += *it;
-            if (s.length() == result.length()) {
-                broken = true;
-                break;
-            }
-        }
-        if (broken)
-            break;
-        for (auto it = a_set.rbegin(); it != a_set.rend(); it++) {
-            result += *it;
-            if (s.length() == result.length()) {
-                broken = true;
-                break;
-            }
-        }
-        if (broken)
-            break;
-    }
-    return result;
+    string increasing = s;
+    string decreasing = s;
+    sort(increasing.begin(), increasing.end());
 }
 
 struct Test1 : ::testing::Test {

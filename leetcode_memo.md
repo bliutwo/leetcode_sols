@@ -26,7 +26,7 @@ vector<int> v(n, 0);
 - convert an int to a string or a string to an int
 - convert a [char to an int](https://stackoverflow.com/questions/5029840/convert-char-to-int-in-c-and-c)
   - looks like you can't do this on leetcode because you'll get a runtime error
-  
+
 - store into int *i* the int version of char *c*
 
 ```cpp
@@ -195,8 +195,6 @@ for (auto const& x : s) cout << x << endl;
 
 - `rbegin()` and `rend()` iterators
 - `iterator` vs. `reverse::iterator`
-- sort a vector of ints *v* in increasing order
-- sort a vector of ints *v* in decreasing order
 - how to use [`partial_sort`](https://www.cplusplus.com/reference/algorithm/partial_sort/)
 - [Difference between `set`, `multiset`, `unordered_set`, `unordered_multiset`](https://www.geeksforgeeks.org/difference-set-multiset-unordered_set-unordered_multiset/)
   - when to use `multiset` vs `set`
