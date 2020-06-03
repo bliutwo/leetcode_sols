@@ -1,4 +1,6 @@
-# Leetcode Memo
+# Leetcode C++ Memo
+
+This is a list of things you should memorize in order to complete leetcode problems.
 
 **TODO**: Organize these into sections based on which data structure is featured (i.e. sections should be `vector` or `map`, etc.).
 
