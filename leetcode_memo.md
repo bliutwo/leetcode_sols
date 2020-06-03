@@ -74,7 +74,7 @@ reverse(s.begin(), s.end());
 - Reverse a vector *v*
 
 ```cpp
-
+reverse(v.begin(), v.end());
 ```
 
 - Question mark colon syntax for picking the greater of integer *a* or integer *b*
