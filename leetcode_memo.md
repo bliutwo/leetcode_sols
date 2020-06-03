@@ -12,6 +12,11 @@ Here are some things that I should know by heart:
   - caveat: what data structure is best for storing characters can still be
     used for lookup
 - how to initialize a vector with *n* zeros
+
+```cpp
+vector<int> v(n, 0);
+```
+
 - how to get the length of a string *s*
 - how to get the length of a vector *v*
 - how to concatenate vectors *v1* and *v2*
@@ -350,4 +355,16 @@ vector<int> v2(v1.begin() + i, v1.begin() + j);
 
 ```cpp
 auto x = *max_element(v.begin(), v.end());
+```
+
+- sort a vector *v* in increasing order
+
+```cpp
+sort(v.begin(), v.end());
+```
+
+- sort a vector *v* in decreasing order
+
+```cpp
+sort(v.begin(), v.end(), greater<int>());
 ```
