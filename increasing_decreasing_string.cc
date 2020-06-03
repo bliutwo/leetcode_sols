@@ -6,6 +6,7 @@ string sortString(string s) {
     string increasing = s;
     string decreasing = s;
     sort(increasing.begin(), increasing.end());
+    sort(decreasing.begin(), decreasing.end(), greater<char>());
 }
 
 struct Test1 : ::testing::Test {

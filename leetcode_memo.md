@@ -397,3 +397,9 @@ size_t i = s.find(c);
 ```cpp
 i ^= 1;
 ```
+
+- sort a string *s* in reverse alphabetical order
+
+```cpp
+sort(s.begin(), s.end(), greater<char>());
+```
