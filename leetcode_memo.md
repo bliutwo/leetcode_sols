@@ -368,3 +368,9 @@ sort(v.begin(), v.end());
 ```cpp
 sort(v.begin(), v.end(), greater<int>());
 ```
+
+- store into `size_t` *i* the first occurrence of char *c* in string *s*
+
+```cpp
+size_t i = s.find(c);
+```
