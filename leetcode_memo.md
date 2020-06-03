@@ -393,3 +393,9 @@ sort(v.begin(), v.end(), greater<int>());
 ```cpp
 size_t i = s.find(c);
 ```
+
+- given an integer *i* that is either 0 or 1, convert it to the other one (i.e. `0 -> 1` or `1 -> 0`)
+
+```cpp
+i ^= 1;
+```
