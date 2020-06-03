@@ -24,6 +24,18 @@ vector<int> v(n, 0);
 - convert an int to a string or a string to an int
 - convert a [char to an int](https://stackoverflow.com/questions/5029840/convert-char-to-int-in-c-and-c)
   - looks like you can't do this on leetcode because you'll get a runtime error
+  
+- store into int *i* the int version of char *c*
+
+```cpp
+int i = c - '0';
+```
+
+- store into int *i* the index of the place of char *c* in the alphabet (e.g. `'a' -> 0`, `'b' -> 1`, etc.)
+
+```cpp
+int i = c - 'a';
+```
 
 I'll insert a link to a set of flashcards at some point.
 
@@ -58,6 +70,10 @@ double result = pow(base, power);
 reverse(s.begin(), s.end());
 ```
 - Reverse a vector *v*
+
+```cpp
+
+```
 
 - Question mark colon syntax for picking the greater of integer *a* or integer *b*
 
@@ -339,7 +355,8 @@ for (size_t len = 1; len <= S.length(); len++)
 
 - how many valid substrings are in a string with a single repeating character that repeats *n* times?
 
-- convert char *c* to int *i* (leetcode version)
+- ~~convert char *c* to int *i* (leetcode version)~~
+  - NOTE: this doesn't always work on leetcode either
 
 ```cpp
 int i = atoi(&c);

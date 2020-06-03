@@ -9,9 +9,9 @@ void output(vector<int> v) {
 }
 
 int main() {
-    vector<int> v = {0, 1,2,3,4};
+    vector<int> v = {2,56,3,6,90};
     output(v);
-    reverse(v.begin(), v.end());
+    sort(v.begin(), v.end(), greater<int>());
     output(v);
 	return 0;
 }
