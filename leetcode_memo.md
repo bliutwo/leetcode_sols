@@ -464,3 +464,40 @@ auto d = distance(it1, it2);
 ```
 
 Need a section on useful bit operations, what they do, and when to use them. Useful guide [here](https://leetcode.com/problems/sum-of-two-integers/discuss/84278/a-summary-how-to-use-bit-manipulation-to-solve-problems-easily-and-efficiently).
+
+- difference between queue and deque
+  - both can insert elements at both ends, but a deque can use the random access `operator[]` (like a vector that can insert and delete at the beginning with `push_front()` and `pop_front()`
+
+- what are the useful methods of a STL queue?
+  - `front()`
+  - `push()`
+  - `pop()`
+  - `empty()`
+  - `size()`
+  
+- what are the useful methods of a STL stack?
+  - `push()`
+  - `pop()`
+  - `empty()`
+  - `size()`
+  - `top()`
+  
+- what are the most useful STL data structures?
+  - stack
+  - queue
+  - list
+  - vector
+  - string
+  
+- when would you use a STL stack?
+- when would you use a STL queue?
+- when would you use a STL list?
+- when would you use a STL vector?
+
+- initialize a queue of ints *q*
+
+```cpp
+queue<int> q;
+```
+
+- push int *i* 
