@@ -1,14 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+void output(vector<int> v) {
+    for (auto x : v) {
+        cout << x << " ";
+    }
+    cout << endl;
+}
+
 int main() {
-    map<char, int> m = {{'a', 0}};
-    if (m.find('a') != m.end())
-        cout << "found" << endl;
-    m.erase('a');
-    if (m.empty())
-        cout << "empty" << endl;
-    if (m.find('a') == m.end())
-        cout << "not found" << endl;
+    vector<int> v = {0, 1, 2, 3};
+    auto d = distance(v.begin(), v.end());
+    cout << d << endl;
+    cout << typeid(d).name() << endl;
     return 0;
 }

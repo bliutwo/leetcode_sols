@@ -22,6 +22,11 @@ vector<int> v(n, 0);
 - how to get the length of a string *s*
 - how to get the length of a vector *v*
 - how to concatenate vectors *v1* and *v2*
+
+```cpp
+v1.insert( v1.end(), v2.begin(), v2.end() );
+```
+
 - ~~how to return absolute value of *x*~~ leetcode doesn't have `#include <cstdlib>`
 - convert an int to a string or a string to an int
 - convert a [char to an int](https://stackoverflow.com/questions/5029840/convert-char-to-int-in-c-and-c)
@@ -374,6 +379,12 @@ vector<int> v2(v1.begin() + i, v1.begin() + j);
 auto x = *max_element(v.begin(), v.end());
 ```
 
+- store min element from vector *v* into *x*
+
+```cpp
+auto x = *min_element(v.begin(), v.end());
+```
+
 - sort a vector *v* in increasing order
 
 ```cpp
@@ -445,3 +456,11 @@ m.erase(k);
 ```cpp
 if (m.empty())
 ```
+
+- store distance between two iterators *it1* and *it2* into *d*
+
+```cpp
+auto d = distance(it1, it2);
+```
+
+Need a section on useful bit operations, what they do, and when to use them. Useful guide [here](https://leetcode.com/problems/sum-of-two-integers/discuss/84278/a-summary-how-to-use-bit-manipulation-to-solve-problems-easily-and-efficiently).
