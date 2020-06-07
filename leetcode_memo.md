@@ -485,12 +485,14 @@ Need a section on useful bit operations, what they do, and when to use them. Use
 - what are the most useful STL data structures?
   - stack
   - queue
+  - deque
   - list
   - vector
   - string
   
 - when would you use a STL stack?
 - when would you use a STL queue?
+- when would you use a STL deque?
 - when would you use a STL list?
 - when would you use a STL vector?
 
@@ -501,3 +503,12 @@ queue<int> q;
 ```
 
 - push int *i* 
+
+- store into integer *total* the sum of all elements of `vector<int> v`
+
+```cpp
+int total = accumulate(v.begin(), v.end(), 0);
+```
+
+- What does this C++ code output: map<int, int> m; cout << m[1] << endl;
+  - 0, because maps default to 0 value
