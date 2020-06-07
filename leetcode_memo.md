@@ -512,3 +512,20 @@ int total = accumulate(v.begin(), v.end(), 0);
 
 - What does this C++ code output: map<int, int> m; cout << m[1] << endl;
   - 0, because maps default to 0 value
+  
+- get all positions of char *c* in string *s*
+
+- reverse substring in string *s* from index *i* to index *j*
+
+```cpp
+reverse(s.begin() + i, s.begin() + j);
+```
+
+- given `string s = "012345";`, what is the output of `reverse(s.begin() + 1, s.begin() + 4); cout << s << endl;`
+  - 032145
+  
+- Python: reverse a string s
+ 
+```python
+s = s[::-1]
+```

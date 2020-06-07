@@ -2,7 +2,8 @@
 using namespace std;
 
 int main() {
-    map<int, int> m;
-    cout << m[1] << endl;
+    string s = "012345";
+    reverse(s.begin() + 1, s.begin() + 4);
+    cout << s << endl;
     return 0;
 }
