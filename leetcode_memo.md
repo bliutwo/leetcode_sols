@@ -1,8 +1,10 @@
-# Leetcode C++ Memo
+# Things to Memorize for Leetcode (C++ and Python)
 
 This is a list of things you should memorize in order to complete leetcode problems.
 
 **TODO**: Organize these into sections based on which data structure is featured (i.e. sections should be `vector` or `map`, etc.).
+
+**NOTE**: All cards are written for C++, unless specified to be for Python.
 
 ## Cards
 
@@ -136,7 +138,7 @@ int c = a > b ? a : b;
 for (size_t i = 0; i < v.size(); i++)
 ```
 
-- `for` loop for all elements except last in vector *v*
+- `for` loop for all elements except last in vector *v* without using auto, range-based, or iterators
 
 ```cpp
 for (size_t i = 0; i < v.size() - 1; i++)
@@ -621,7 +623,48 @@ reverse(s.begin() + i, s.begin() + j);
 s = s[::-1]
 ```
 
-- Count the number of set bits in integer *i*
-- Sort map *m* by value
+- count the number of set bits in integer *i*
+- sort map *m* by value
+- Python: sort dictionary *d* by value
+
+```python
+{k: v for k, v in sorted(d.items(), key=lambda item: item[1])}
+```
 
 [Bit Tricks for Competitive Programming](https://www.geeksforgeeks.org/bit-tricks-competitive-programming/)
+
+- Python: use `enumerate()` function in for loop over `some_list`
+
+```python
+for counter, value in enumerate(some_list):
+```
+
+- Python: given a matrix (list of lists of integers) *mat*, use a list comprehension to build a list *l* of pairs (*a*, *b*), where *a* is the sum of each row, and *b* is the index of the row in the matrix
+
+```python
+l = [(sum(row), i) for i, row in enumerate(mat)]
+```
+
+- Python: sort list of pairs *l* by the second element in each pair
+
+```python
+l.sort(key=lambda x: x[1])
+```
+
+- Python: sort a list *l*
+
+```python
+l.sort()
+```
+
+- What is the output of `cout << 5/2 << endl;`
+  - 2
+  
+- what does `std::vector::back` do?
+  - Returns a reference to the last element in the vector. Unlike member vector::end, which returns an iterator just past this element, this function returns a direct reference. Calling this function on an empty container causes undefined behavior.
+
+- store the last element of vector *v* into *x*
+
+```cpp
+auto x = v.back();
+```

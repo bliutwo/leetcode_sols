@@ -2,11 +2,12 @@
 using namespace std;
 
 int main() {
-    string s = "asdfghjkl";
-    cout << s << endl;
-    sort(s.begin(), s.end(), greater<char>());
-    cout << s << endl;
-    sort(s.begin(), s.end());
-    cout << s << endl;
+    vector<int> v = {0,1,2,3,4};
+    auto x = v.back();
+    cout << x << endl;
+    
+    vector<int> v2 = {1, 2, 3, 4, 5};
+    auto y = v2.back();
+    cout << y << endl;
     return 0;
 }
