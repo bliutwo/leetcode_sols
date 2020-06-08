@@ -4,39 +4,74 @@ This is a list of things you should memorize in order to complete leetcode probl
 
 **TODO**: Organize these into sections based on which data structure is featured (i.e. sections should be `vector` or `map`, etc.).
 
-## Original
+## Cards
 
 Here are some things that I should know by heart:
 
-- how to erase a character in a string *s* at index *i*
-- get the index of character *c* in string *s*
+- erase a character in a string *s* at index *i*
+
+```cpp
+s.erase(i, 1);
+```
+
+- store index of character *c* in string *s* into size_t *found*
+
+```cpp
+size_t found = s.find(c);
+```
+
+- write a conditional that checks if the variable *found* from `size_t found = s.find(c);` is *not* "not found"
+
+```cpp
+if (found != string::npos)
+```
+
 - what data structure is best for lookup
   - caveat: what data structure is best for storing characters can still be
     used for lookup
+
 - how to initialize a vector with *n* zeros
 
 ```cpp
 vector<int> v(n, 0);
 ```
 
-- how to get the length of a string *s*
-- how to get the length of a vector *v*
-- how to concatenate vectors *v1* and *v2*
+- store length of string *s* into size_t *length*
+
+```cpp
+size_t length = s.length();
+```
+
+- store length of vector *v* into size_t *length*
+
+```cpp
+size_t length = v.size();
+```
+
+- append vector *v2* to *v1* (concatenate vectors *v1* and *v2*)
 
 ```cpp
 v1.insert( v1.end(), v2.begin(), v2.end() );
 ```
 
 - ~~how to return absolute value of *x*~~ leetcode doesn't have `#include <cstdlib>`
-- convert an int to a string or a string to an int
-- convert a [char to an int](https://stackoverflow.com/questions/5029840/convert-char-to-int-in-c-and-c)
-  - looks like you can't do this on leetcode because you'll get a runtime error
 
-- store into int *i* the int version of char *c*
+Convert an int to a string or a string to an int:
+
+- convert char *c* to int *i*
 
 ```cpp
 int i = c - '0';
 ```
+
+- convert string *s* to int *num*
+
+```cpp
+int num = stoi(s);
+```
+  
+- convert a [char to an int](https://stackoverflow.com/questions/5029840/convert-char-to-int-in-c-and-c)
+  - looks like you can't do this on leetcode because you'll get a runtime error
 
 - store into int *i* the index of the place of char *c* in the alphabet (e.g. `'a' -> 0`, `'b' -> 1`, etc.)
 
@@ -45,8 +80,6 @@ int i = c - 'a';
 ```
 
 I'll insert a link to a set of flashcards at some point.
-
-## The rest
 
 - Insert integer *n* into vector *v* at index *i*, pushing the elements afterwards one index forward
 
@@ -58,7 +91,7 @@ v.insert(v.begin() + i, n);
 
 ```cpp
 #include <algorithm>
-auto it = v.find(v.begin(), v.end(), n);
+auto it = find(v.begin(), v.end(), n);
 int index = distance(v.begin(), it);
 ```
 
@@ -76,30 +109,37 @@ double result = pow(base, power);
 ```cpp
 reverse(s.begin(), s.end());
 ```
+
+- algorithm for reversing an array *arr* in place
+
 - Reverse a vector *v*
 
 ```cpp
 reverse(v.begin(), v.end());
 ```
 
-- Question mark colon syntax for picking the greater of integer *a* or integer *b*
+- store the greater of integer *a* or integer *b* into integer *c* using question mark colon syntax
+
+```cpp
+int c = a > b ? a : b;
+```
 
 - Name for question mark colon syntax
   - ternary operator
 
-- Do you need to write your own `abs()` function for leetcode c++?
+- Do you need to write your own `abs()` function for leetcode C++?
   - Yes
 
-- `for` loop for all elements in vector *v*
+- `for` loop for all elements in vector *v* without using auto, range-based, or iterators
 
 ```cpp
-for (int i = 0; i < v.size(); i++)
+for (size_t i = 0; i < v.size(); i++)
 ```
 
 - `for` loop for all elements except last in vector *v*
 
 ```cpp
-for (int i = 0; i < v.size() - 1; i++)
+for (size_t i = 0; i < v.size() - 1; i++)
 ```
 
 - store a lower case version of a char *c* in char *a*
@@ -108,13 +148,19 @@ for (int i = 0; i < v.size() - 1; i++)
 char a = tolower(c);
 ```
 
-- convert char *c* to its lower case version
+- store an upper case version of a char *c* in char *a*
+
+```cpp
+char a = toupper(c);
+```
+
+- convert char *c* to its lower case version without `tolower()`
 
 ```cpp
 c -= 32;
 ```
 
-- convert char *c* to its upper case version
+- convert char *c* to its upper case version without `toupper()`
 
 ```cpp
 c += 32;
@@ -143,6 +189,42 @@ if (c >= 'a' && c <= 'z')
 - when to use `map`
 - when to use `unordered_map`
 
+- how is a map ordered?
+  - increasing order (by default)
+
+- how is an unordered_map ordered?
+  - no ordering
+
+- how is a map implemented?
+  - self balancing BST like red-black tree
+
+- how is an unordered_map implemented?
+  - hash table
+
+- what is the search time of map?
+  - log(n)
+
+- what is the search time of unordered_map?
+  - O(1) -> average, O(n) -> worst case
+
+- what is the insertion time of map?
+  - log(n) + rebalance
+
+- what is the insertion time of unordered_map?
+  - O(1) -> average, O(n) -> worst case
+
+- what is the deletion time of map?
+  - log(n) + rebalance
+
+- what is the deletion time of unordered_map?
+  - O(1) -> average, O(n) -> worst case
+  
+- when to use map instead of unordered_map?
+  - you need ordered data; you would have to print/access the data (in sorted order); you need predecessor/successor of elements
+
+- when to use unordered_map instead of map?
+  - you need to keep count of some data (example - strings) and no ordering is required; you need single element access i.e. no traversal
+
 - check if integer key *i* in `unordered_map<int, int> m`
 
 ```cpp
@@ -155,8 +237,7 @@ if (m.find(i) != m.end())
 map<int, char> m;
 ```
 
-- declare and initialize a `map` mapping first four alphanumeric chars to their
-  zero-indexed position in alphabet
+- declare and initialize a `map` called `m` mapping first four alphanumeric chars to their zero-indexed position in alphabet
 
 ```cpp
 map<char, int> m = { {'a', 0}, {'b', 1}, {'c', 2}, {'d', 3} };
@@ -174,19 +255,19 @@ m[4] = 'd';
 unordered_map<string, int> um;
 ```
 
-- output each key and value separated by a colon with a new line after each key-value printing with an iterator *it* for `map<char, int> m`
+- output each key and value separated by a colon with a new line after each key-value printing with an iterator *it* for `map<char, int> m` (no `auto` or `[key, value]`)
 
 ```cpp
 map<char, int>::iterator it; for (it = m.begin(); it != m.end(); it++) cout << it->first << ':' << it->second << endl;
 ```
 
-- output each key and value separated by a colon with a new line after each key-value printing for `map<char, int> m` with `auto` but WITHOUT keywords `key` and `val`
+- output each key and value separated by a colon with a new line after each key-value printing for `map<char, int> m` with `auto` but WITHOUT keywords `key` and `val` (and with const ref)
 
 ```cpp
 for (auto const& x : m) cout << x.first << ':' << x.second << endl;
 ```
 
-- output each key and value separated by a colon with a new line after each key-value printing for `map<char, int> m` with `auto` but WITH keywords `key` and `val`
+- output each key and value separated by a colon with a new line after each key-value printing for `map<char, int> m` with `auto` but WITH keywords `key` and `val` (and with const ref)
 
 ```cpp
 for (auto const& [key, val] : m) cout << key << ':' << val << endl;
@@ -228,7 +309,7 @@ int a = max(i, j);
 ```
 
 - get element(s) exclusive to set *b* when you have sets *a* and *b*
-  - `set_difference`
+  - `set_difference` (TODO)
 
 - store size of set *s* into size_t *n*
 
@@ -254,7 +335,7 @@ s.erase(n);
 if (s.find(n) != s.end())
 ```
 
-- initialize 2-d vector *v* with all 0's with dimensions *n* and *m*
+- initialize 2-d vector *v* with all 0's with *n* rows and *m* columns
 
 ```cpp
 vector<vector<int>> v(n, vector<int> (m, 0));
@@ -353,9 +434,9 @@ for (size_t len = 1; len <= s.length(); len++) {
 Alternatively,
 
 ```cpp
-for (size_t len = 1; len <= S.length(); len++)
-    for (size_t i = 0; i < S.length() - len + 1; i++)
-        cout << S.substr(i, len) << endl;
+for (size_t len = 1; len <= s.length(); len++)
+    for (size_t i = 0; i < s.length() - len + 1; i++)
+        cout << s.substr(i, len) << endl;
 ```
 
 - how many valid substrings are in a string with a single repeating character that repeats *n* times?
@@ -421,10 +502,16 @@ i ^= 1;
 sort(s.begin(), s.end(), greater<char>());
 ```
 
+- sort a string *s* in alphabetical order
+
+```cpp
+sort(s.begin(), s.end());
+```
+
 - check if string *s* is empty
 
 ```cpp
-if(s.empty())
+if (s.empty())
 ```
 
 - check if `s.find(c)` found nothing
@@ -468,21 +555,21 @@ Need a section on useful bit operations, what they do, and when to use them. Use
 - difference between queue and deque
   - both can insert elements at both ends, but a deque can use the random access `operator[]` (like a vector that can insert and delete at the beginning with `push_front()` and `pop_front()`
 
-- what are the useful methods of a STL queue?
+- what are the 5 useful methods of an STL queue?
   - `front()`
   - `push()`
   - `pop()`
   - `empty()`
   - `size()`
   
-- what are the useful methods of a STL stack?
+- what are the 5 useful methods of an STL stack?
   - `push()`
   - `pop()`
   - `empty()`
   - `size()`
   - `top()`
   
-- what are the most useful STL data structures?
+- what are the 6 most useful STL data structures?
   - stack
   - queue
   - deque
@@ -502,7 +589,11 @@ Need a section on useful bit operations, what they do, and when to use them. Use
 queue<int> q;
 ```
 
-- push int *i* 
+- push int *i* into queue *q*
+
+```cpp
+q.push(i);
+```
 
 - store into integer *total* the sum of all elements of `vector<int> v`
 
@@ -529,3 +620,8 @@ reverse(s.begin() + i, s.begin() + j);
 ```python
 s = s[::-1]
 ```
+
+- Count the number of set bits in integer *i*
+- Sort map *m* by value
+
+[Bit Tricks for Competitive Programming](https://www.geeksforgeeks.org/bit-tricks-competitive-programming/)
