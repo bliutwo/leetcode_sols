@@ -2,12 +2,11 @@
 using namespace std;
 
 int main() {
-    vector<int> v = {0,1,2,3,4};
-    auto x = v.back();
-    cout << x << endl;
-    
-    vector<int> v2 = {1, 2, 3, 4, 5};
-    auto y = v2.back();
-    cout << y << endl;
+    string s1 = "012345";
+    int i = 1;
+    int len = 3;
+    string s2 = s1.substr(i, len);
+    cout << s1 << endl;
+    cout << s2 << endl;
     return 0;
 }

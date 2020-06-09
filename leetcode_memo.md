@@ -382,7 +382,7 @@ void foo(int* a);
 - store substring of *s1* between indices *n* and *m* into string *s2*
 
 ```cpp
-string s2 = s1.substr(s1.begin() + n, s1.begin() + m);
+string s2(s1.begin() + n, s1.begin() + m);
 ```
 
 - store substring of *s1* from index *i* with length *len* into string *s2*
@@ -667,4 +667,44 @@ l.sort()
 
 ```cpp
 auto x = v.back();
+```
+
+- Problem: Remove all pairs of duplicate adjacent characters (i.e. "aaab" -> "ab" or "aa" -> ""). Describe 3 ways to solve this, and for each algorithm, what is the edge case(s) you should consider, and what is the time and space complexity?
+
+1. Brute force: Loop through each index, checking if there is any pair of adjacent, equivalent letters. If there is, erase those two characters, then reset the counter to -1 since the for loop will ++ (to bring you to index 0). The edge case is if you have an empty string, so break out of the loop if the string is empty (i.e. you get "aaaa" -> "", or if you just get ""). Time: O(n^2), where n is the length of the string, since you could double back on the string for each character; Space: O(n), where n is the length of the string.
+
+2. Stack: Declare an empty stack (or just use an empty string), and loop over each character in the original string. If your stack/string is non-empty AND the current character is the same as the top character on your stack / the last character in your string, pop the element from the stack / pop off the last character from the string. Otherwise, push the character onto the stack / onto the end of the string. If you have a stack, construct a new string by popping off each character into a new empty string. If you have a string, just return the string. Time: O(n), Space: O(n), where n is the length of the string.
+
+- delete last character of string *s*
+
+```cpp
+s.pop_back();
+```
+
+- append character *c* to end of string *s*
+
+```cpp
+s.push_back(c);
+```
+
+- what are two string methods that can let you treat strings like a stack?
+  - pop_back(), push_back()
+  
+- store the top element from a stack *s* into *e* and then pop it off
+
+```cpp
+auto e = s.top();
+s.pop();
+```
+
+- check if element *m* is in vector *v*
+
+```cpp
+if (find(v.begin(), v.end(), m) != v.end())
+```
+
+- erase element *key* from map *m*
+
+```cpp
+m.erase(key);
 ```
