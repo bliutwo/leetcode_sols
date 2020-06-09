@@ -716,3 +716,22 @@ m.erase(key);
 
 - If you have a finite number of elements--specifically, the letters in the alphabet--that you need to keep count of, what's the most space efficient way to keep track of those counts?
   - Make an array where each index corresponds to a letter of the alphabet. For non-alphabet elements, if you need to keep track of order, use a map mapping elements to integer counts. If you don't need to keep track of order, use an unordered_map.
+
+- what's the difference between `pair` and `tuple` in C++?
+
+1. It's a bit easier to get the contents of a `pair` than a `tuple`. You have to use a function call in the `tuple` case, while the `pair` case is just a member field.
+2. Basically, `std::pair<T, Y>` is standard-layout if both `T` and `Y` are standard-layout,  while `std::tuple` is never required to be standard-layout.
+
+- what is `std::is_standard_layout`, and what is its C++ definition?
+  - Trait class that identifies whether T is a standard-layout type. `template <class T> struct is_standard_layout;`
+
+- (OPTIONAL) what is a *standard-layout type*?
+  - a type with a simple linear data structure and access control that can easily be used to communicate with code written in other programming languages, such as C, either cv-qualified or not. This is true for scalar types, standard-layout classes and arrays of any such types.
+  
+- (OPTIONAL) what is a *standard-layout class*?
+  - a class (defined with `class`, `struct` or `union`) that:
+    - has no virtual functions and no virtual base classes.
+    - has the same access control (`private`, `protected`, `public`) for all its non-static data members.
+    - either has no non-static data members in the most derived class and at most one base class with non-static data members, or has no base classes with non-static data members.
+    - its base class (if any) is itself also a *standard-layout class*. And,
+    - has no base classes of the same type as its first non-static data member.
