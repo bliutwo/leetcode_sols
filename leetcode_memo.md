@@ -717,12 +717,12 @@ m.erase(key);
 - If you have a finite number of elements--specifically, the letters in the alphabet--that you need to keep count of, what's the most space efficient way to keep track of those counts?
   - Make an array where each index corresponds to a letter of the alphabet. For non-alphabet elements, if you need to keep track of order, use a map mapping elements to integer counts. If you don't need to keep track of order, use an unordered_map.
 
-- what's the difference between `pair` and `tuple` in C++?
+- what's the difference between `pair` and `tuple` in C++? ([link](https://stackoverflow.com/questions/6687107/difference-between-stdpair-and-stdtuple-with-only-two-members))
 
 1. It's a bit easier to get the contents of a `pair` than a `tuple`. You have to use a function call in the `tuple` case, while the `pair` case is just a member field.
 2. Basically, `std::pair<T, Y>` is standard-layout if both `T` and `Y` are standard-layout,  while `std::tuple` is never required to be standard-layout.
 
-- what is `std::is_standard_layout`, and what is its C++ definition?
+- what is `std::is_standard_layout`, and what is its C++ definition? ([link](https://www.cplusplus.com/reference/type_traits/is_standard_layout/))
   - Trait class that identifies whether T is a standard-layout type. `template <class T> struct is_standard_layout;`
 
 - (OPTIONAL) what is a *standard-layout type*?
