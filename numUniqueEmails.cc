@@ -17,7 +17,13 @@ int numUniqueEmails(vector<string>& emails) {
         }
         // find +
         size_t plus_index = local.find('+');
-        string new_local(local.begin(), local.begin() + plus_index);
+        string new_local;
+        if (plus_index != string::npos) {
+            string tmp(local.begin(), local.begin() + plus_index);
+            new_local = tmp;
+        } else {
+            new_local = local;
+        }
         string email = new_local + "@" + domain;
         unique_emails.insert(email);
     }
