@@ -6,6 +6,8 @@ This is a list of things you should memorize in order to complete leetcode probl
 
 **NOTE**: All cards are written for C++, unless specified to be for Python.
 
+[Text file](https://drive.google.com/file/d/1MgthutGnuFLUzl3uMxvAT7J4f5kfKHLY/view?usp=sharing) containing notes. Can be converted using [Quizlet](https://help.quizlet.com/hc/en-us/articles/360029977151-Creating-sets-by-importing-content).
+
 ## Cards
 
 Here are some things that I should know by heart:
@@ -708,3 +710,9 @@ if (find(v.begin(), v.end(), m) != v.end())
 ```cpp
 m.erase(key);
 ```
+
+- what is the output of: `vector<int> v(26); cout << v[6] << endl;`
+  - 0
+
+- If you have a finite number of elements--specifically, the letters in the alphabet--that you need to keep count of, what's the most space efficient way to keep track of those counts?
+  - Make an array where each index corresponds to a letter of the alphabet. For non-alphabet elements, if you need to keep track of order, use a map mapping elements to integer counts. If you don't need to keep track of order, use an unordered_map.

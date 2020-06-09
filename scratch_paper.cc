@@ -2,7 +2,7 @@
 using namespace std;
 
 int main() {
-    string s1 = "012345";
-    cout << s1[6] << endl;
+    char c = 'b';
+    cout << c - 'a' << endl;
     return 0;
 }
