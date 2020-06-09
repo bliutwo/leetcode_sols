@@ -1,4 +1,4 @@
-# Things to Memorize for Leetcode (C++ and Python)
+# Things to Memorize for Leetcode (C++ and Some Python)
 
 This is a list of things you should memorize in order to complete leetcode problems.
 
