@@ -845,3 +845,9 @@ s.insert(s.begin(), c);
 ```cpp
 char c = '0' + i;
 ```
+
+- Talk it out: How do you check if a really long string is a palindrome (it's the same string if reversed)?
+  - Have two pointers to each end of the string. Increment/decrement each one by one until you get to the middle (at which point it's true). If at any point the chars are different, then it's not a palindrome.
+
+- Talk it out: How do you check if a really long string is a palindrome (it's the same string if reversed), if you are able to delete a single character?
+  - Have two pointers to each end of the string. Increment/decrement each one by one until you get to the middle (at which point it's true). If at any point the chars are different, then check two cases: Increment one end one character faster than the other (one case for each end), and do the regular two-pointer approach for the two new inner strings, each of which has a deleted character. If either one reaches the middle without differing characters, the whole thing is true.
