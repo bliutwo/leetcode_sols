@@ -3,66 +3,27 @@
 using namespace std;
 
 string addStrings(string num1, string num2) {
-    string total{};
-    int i = num1.length() - 1;
-    int j = num2.length() - 1;
+    int i = num1.size() - 1;
+    int j = num2.size() - 1;
     int carry = 0;
-    while (i >= 0 and j >= 0) {
-        char a = num1[i];
-        char b = num2[j];
-        int first = a - '0';
-        int second = b - '0';
-        int third = first + second;
-        bool increment_carry = false;
-        if (third > 9) {
-            increment_carry = true;
-            third = third % 10;
+    string ans = "";
+    while (i >= 0 || j >= 0 || carry) {
+        long sum = 0;
+        if (i >= 0) {
+            sum += (num1[i] - '0');
+            i--;
         }
-        char add;
-        if (carry > 0) {
-            add = '0' + third + 1;
-            carry--;
-        } else {
-            add = '0' + third;
+        if (j >= 0) {
+            sum += (num2[j] - '0');
+            j--;
         }
-        if (increment_carry)
-            carry++;
-        total.insert(total.begin(), add);
-        i--;
-        j--;
+        sum += carry;
+        carry = sum / 10;
+        sum = sum % 10;
+        ans = ans + to_string(sum);
     }
-    cout << i << endl;
-    cout << j << endl << endl;
-    while (i >= 0) {
-        char a = num1[i];
-        int first = a - '0';
-        char add;
-        if (carry > 0) {
-            add = '0' + first + 1;
-            carry--;
-        } else {
-            add = '0' + first;
-        }
-        total.insert(total.begin(), add);
-        i--;
-    }
-    while (j >= 0) {
-        char b = num2[j];
-        int second = b - '0';
-        char add;
-        if (carry > 0) {
-            add = '0' + second + 1;
-            carry--;
-        } else {
-            add = '0' + second;
-        }
-        total.insert(total.begin(), add);
-        j--;
-    }
-    if (carry > 0) {
-        total.insert(total.begin(), '1');
-    }
-    return total;
+    reverse(ans.begin(), ans.end());
+    return ans;
 }
 
 struct Test1 : ::testing::Test {
