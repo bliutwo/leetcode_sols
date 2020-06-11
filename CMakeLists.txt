@@ -31,6 +31,6 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
 endif()
 
 # Now simply link against gtest or gtest_main as needed. Eg
-add_executable(a.out sumOfDigits.cc)
+add_executable(a.out add_strings.cc)
 target_link_libraries(a.out gtest_main)
 add_test(NAME example_test COMMAND a.out)
