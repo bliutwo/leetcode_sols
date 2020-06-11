@@ -830,3 +830,18 @@ int maximum = INT_MAX;
 ```cpp
 int minimum = INT_MIN;
 ```
+
+- Talk it out: How do you get the largest element of a map by value, where all keys are unique, and all values are unique?
+  - As you construct the map, keep a vector of the keys. Then sort the vector keys in decreasing order, and then do m[v[0]]. Or just have a map of values to keys, and then use the reverse iterator to get the "first" element in the map.
+
+- insert char *c* at front of string *s*
+
+```cpp
+s.insert(s.begin(), c);
+```
+
+- convert int *i* to char *c*
+
+```cpp
+char c = '0' + i;
+```
