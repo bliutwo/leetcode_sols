@@ -295,9 +295,59 @@ for (auto const& x : s) cout << x << endl;
 set<int> s(v.begin(), v.end());
 ```
 
-- get intersection of sets *s1*, *s2*, *s3*
+- convert set of ints *s* to a vector (that you will declare) of ints *v*
+
+```cpp
+vector<int> v(s.begin(), s.end());
+```
+
+- store intersection of sets of integers *s1* and *s2* into set of integers *s3*, which you will declare
+
+```cpp
+set<int> s3;
+set_intersection(s1.begin(), s1.end(), s2.begin(), s2.end(), inserter(s3, s3.begin()));
+```
+
+- Talk it out: How do you store intersection of vectors of integers *v1* and *v2* into vector of integers *v3* (that you will declare)?
+  - convert *v1* and *v2* into sets, store their intersection in a new set, and then convert the new set to the new vector *v3*
+
+- Talk it out: Given two lists, return a third list that is the intersection of the two lists, in *O(1)* space (don't consider the third list as part of the space you use) and *O(n)* time. Don't use built-in set intersection functions, and don't convert the lists to sets.
+  - First, sort the two lists. Have two pointers (iterators) point to the first elements of the two lists. Declare a new list. While either pointer (iterator) hasn't reached the end of its respective list, if the two elements pointed to by both iterators are equal, add that "equal" element to the new list, and increment the iterators/pointers until you get to a new element in each list. Now that you're pointing to... 
+
+```python
+def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+    # sort first list, (nums1)
+    nums1.sort()
+    # sort second list, (nums2)
+    nums2.sort()
+    # declare third list, result
+    result = []
+
+    # i and j iterate over l_list and r_list, respectively
+    i = 0
+    j = 0
+
+    while i < len(nums1) and j < len(nums2):
+        if nums1[i] == nums2[j] and (not result or nums1[i] != result[-1]):
+            result.append(nums1[i])
+        if nums1[i] < nums2[j]:
+            i += 1
+        else:
+            j += 1
+
+    return result
+```
+
+**TODO**: C++ version of above Python code
+
 - get union of sets *s1*, *s2*, *s3*
-- get intersection of vectors *v1* and *v2*
+
+- store intersection of vectors of integers *v1* and *v2* into vector of integers *v3*, which you will declare
+
+```cpp
+vector<int> v3; set_intersection(v1.begin(), v1.end(), v2.begin(), v2.end(), back_inserter(v3)); // v3 contains duplicates
+```
+
 - when to use `priority_queue`
 - when to use `heap`
 - store bigger of two integers *i* and *j* into integer *a*
@@ -735,3 +785,15 @@ m.erase(key);
     - either has no non-static data members in the most derived class and at most one base class with non-static data members, or has no base classes with non-static data members.
     - its base class (if any) is itself also a *standard-layout class*. And,
     - has no base classes of the same type as its first non-static data member.
+
+- What are two ways to traverse a binary search tree?
+  - 1) recursively, 2) using a stack
+
+- What's it called when you eliminate an entire subtree from being required to be searched?
+  - pruning
+
+- iterate over elements of vector of ints *v* backwards using classic for loop
+
+```cpp
+for (int i = v.size() - 1; i >= 0; i--) // NOTE: int not size_t because size_t doesn't go below 0!
+```
