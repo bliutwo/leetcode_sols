@@ -797,3 +797,9 @@ m.erase(key);
 ```cpp
 for (int i = v.size() - 1; i >= 0; i--) // NOTE: int not size_t because size_t doesn't go below 0!
 ```
+
+- check if vector *v* is sorted
+
+```cpp
+if(is_sorted(v.begin(), v.end()))
+```
