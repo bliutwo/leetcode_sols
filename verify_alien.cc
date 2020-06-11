@@ -5,11 +5,12 @@ void construct_map(map<char, int>& m, string& order) {
         m[c] = i;
     }
 }
-bool sorted_lexic(string& curr, string& next, map<int, char>& m) {
+
+bool sorted_lexic(string& curr, string& next, map<char, int>& m) {
     if (curr == next) {
         return true;
     }
-    if (curr.length() > next.length() and curr.find(next) != curr.end()) {
+    if (curr.length() > next.length() and curr.find(next) != string::npos) {
         return false;
     }
     int length = curr.length() < next.length() ? curr.length() : next.length();
@@ -27,6 +28,7 @@ bool sorted_lexic(string& curr, string& next, map<int, char>& m) {
     }
     return true;
 }
+
 bool isAlienSorted(vector<string>& words, string order) {
     map<char, int> m;
     construct_map(m, order);
