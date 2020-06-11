@@ -803,3 +803,30 @@ for (int i = v.size() - 1; i >= 0; i--) // NOTE: int not size_t because size_t d
 ```cpp
 if(is_sorted(v.begin(), v.end()))
 ```
+
+- Talk it out: How do you find the diameter of a binary tree, where the diameter is the length of the **longest** path between any two nodes in a tree?
+  - For every node, length of longest path which pass it = MaxDepth of its left subtree + MaxDepth of its right subtree. Make sure you have a variable keeping track of the maximum depth you've seen so far.
+
+- How to represent the greatest double possible?
+
+```cpp
+double maximum = DBL_MAX;
+```
+
+- How to represent the smallest double possible?
+
+```cpp
+double minimum = DBL_MIN;
+```
+
+- How to represent the greatest integer possible?
+
+```cpp
+int maximum = INT_MAX;
+```
+
+- How to represent the smallest integer possible?
+
+```cpp
+int minimum = INT_MIN;
+```
