@@ -721,7 +721,7 @@ l.sort()
 auto x = v.back();
 ```
 
-- Problem: Remove all pairs of duplicate adjacent characters (i.e. "aaab" -> "ab" or "aa" -> ""). Describe 3 ways to solve this, and for each algorithm, what is the edge case(s) you should consider, and what is the time and space complexity?
+- Problem: Remove all pairs of duplicate adjacent characters (i.e. "aaab" -> "ab" or "aa" -> ""). Describe 2 ways to solve this, and for each algorithm, what is the edge case(s) you should consider, and what is the time and space complexity?
 
 1. Brute force: Loop through each index, checking if there is any pair of adjacent, equivalent letters. If there is, erase those two characters, then reset the counter to -1 since the for loop will ++ (to bring you to index 0). The edge case is if you have an empty string, so break out of the loop if the string is empty (i.e. you get "aaaa" -> "", or if you just get ""). Time: O(n^2), where n is the length of the string, since you could double back on the string for each character; Space: O(n), where n is the length of the string.
 

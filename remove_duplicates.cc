@@ -1,10 +1,11 @@
-#include <bits/stdc++.h>
 #include "gtest/gtest.h"
+#include <bits/stdc++.h>
 using namespace std;
 
-int remove_duplicates(string& s) {
+string remove_duplicates(string& s) {
     if (s.empty()) return s;
     for (int i = 0; i < s.length() - 1; i++) {
+        if (s.length() == 0) break;
         char a = s[i];
         char b = s[i+1];
         if (a == b) {
