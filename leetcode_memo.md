@@ -725,7 +725,7 @@ auto x = v.back();
 
 1. Brute force: Loop through each index, checking if there is any pair of adjacent, equivalent letters. If there is, erase those two characters, then reset the counter to -1 since the for loop will ++ (to bring you to index 0). The edge case is if you have an empty string, so break out of the loop if the string is empty (i.e. you get "aaaa" -> "", or if you just get ""). Time: O(n^2), where n is the length of the string, since you could double back on the string for each character; Space: O(n), where n is the length of the string.
 
-2. Stack: Declare an empty stack (or just use an empty string), and loop over each character in the original string. If your stack/string is non-empty AND the current character is the same as the top character on your stack / the last character in your string, pop the element from the stack / pop off the last character from the string. Otherwise, push the character onto the stack / onto the end of the string. If you have a stack, construct a new string by popping off each character into a new empty string. If you have a string, just return the string. Time: O(n), Space: O(n), where n is the length of the string.
+2. Stack: Declare an empty stack (or just use an empty string, which we'll refer to as the "stack-string"), push the first character of the original string into the newly declared stack / stack-string, and loop over each remaining character in the original string. If your stack / stack-string is non-empty AND the current character in the original string is the same as the top character on your stack / the last character in your stack-string, pop the element from the stack / pop off the last character from the stack-string. Otherwise, push the character onto the stack / onto the end of the string. If you have a stack, construct a new string by popping off each character into a new empty string. If you have the stack-string, just return that stack-string. Time: O(n), Space: O(n), where n is the length of the string.
 
 - delete last character of string *s*
 
@@ -901,3 +901,21 @@ l.reverse()
 ```python
 e = l[-1]
 ```
+
+- given `string s = "012345";`, what is the output of `reverse(s.begin() + 1, s.begin() + 2); cout << s << endl;`
+  - 012345
+
+- given `string s = "012345";`, what is the output of `reverse(s.begin() + 3, s.begin() + 5); cout << s << endl;`
+  - 012435
+
+- given `string s = "012345";`, what is the output of `reverse(s.begin() + 2, s.begin() + 6); cout << s << endl;`
+  - 015432
+
+- given `string s = "012345";`, what is the output of `reverse(s.begin() + 1, s.begin() + 1); cout << s << endl;`
+  - 012345
+
+- given `string s = "012345";`, what is the output of `reverse(s.begin() + 1, s.begin()); cout << s << endl;`
+  - 012345
+
+- given `string s = "012345";`, what is the output of `reverse(s.begin() + 4, s.begin()); cout << s << endl;`
+  - 012345
