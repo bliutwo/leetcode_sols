@@ -860,3 +860,32 @@ if (isalnum(c))
 
 - List it out, out loud: What are some common mistakes you make while coding that you should check for before submitting your solution? (1)
   - use `--` instead of `++`, or vice versa
+  
+- store square root of *x* into double *a* (you will declare *a*)
+
+```cpp
+double a = sqrt(x);
+```
+
+- how much time does this take: finding all subsets of a set
+  - O(2^n)
+
+- how much time does this take: finding all permutations of a string
+  - O(n!)
+
+- how much time does this take: sorting using mergesort
+  - O(n log (n))
+
+- how much time does this take: iterating over all the cells in a matrix of size n by m
+  - O(nm)
+
+- check if x is even using bitwise operator(s)
+
+```cpp
+if (x & 1 == 0)
+```
+- check if x is odd using bitwise operator(s)
+
+```cpp
+if (x & 1 == 1)
+```

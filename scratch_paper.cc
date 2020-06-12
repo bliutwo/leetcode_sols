@@ -1,15 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void insert_at_beginning(string& s, char c) {
-    s.insert(s.begin(), c);
-}
-
 int main() {
-    string s = "2345";
-    cout << s << endl;
-    insert_at_beginning(s, '1');
-    cout << s << endl;
-    insert_at_beginning(s, '0');
+    string s{};
+    int x = 143;
+    for (int i = 31; i >= 0; i--) {
+        if ((x & (1 << i)) != 0) {
+            s += '1';
+        } else {
+            s += '0';
+        }
+    }
     cout << s << endl;
 }
