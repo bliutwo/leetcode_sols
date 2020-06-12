@@ -7,13 +7,13 @@ int example_function(int input) {
 }
 
 struct Test1 : ::testing::Test {
-    input = 1;
-    output = 1;
+    int input = 1;
+    int output = 1;
 };
 
 struct Test2 : ::testing::Test {
-    input = 0;
-    output = 1;
+    int input = 0;
+    int output = 1;
 };
 
 TEST_F(Test1, UnitTest1) {
