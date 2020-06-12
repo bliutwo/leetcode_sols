@@ -1,12 +1,3 @@
-mat = [[1,1,0,0,0],
- [1,1,1,1,0],
- [1,0,0,0,0],
- [1,1,0,0,0],
- [1,1,1,1,1]]
- 
-l = [(sum(row), i) for i, row in enumerate(mat)]
-print(l)
-
-l.sort(key=lambda x: x[1])
-
-print(l)
+l = [1,2,3,4,5]
+for counter, value in enumerate(l):
+    print(counter, value)

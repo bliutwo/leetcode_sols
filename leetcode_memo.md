@@ -6,7 +6,7 @@ This is a list of things you should memorize in order to complete leetcode probl
 
 **NOTE**: All cards are written for C++, unless specified to be for Python.
 
-[Text file](https://drive.google.com/file/d/1MgthutGnuFLUzl3uMxvAT7J4f5kfKHLY/view?usp=sharing) containing notes. Can be converted using [Quizlet](https://help.quizlet.com/hc/en-us/articles/360029977151-Creating-sets-by-importing-content).
+[Text file](https://drive.google.com/file/d/1MgthutGnuFLUzl3uMxvAT7J4f5kfKHLY/view?usp=sharing) containing notes. Can be converted into cards/notes using [Quizlet](https://help.quizlet.com/hc/en-us/articles/360029977151-Creating-sets-by-importing-content) or [Anki](https://docs.ankiweb.net/#/importing).
 
 ## Cards
 
@@ -888,4 +888,16 @@ if (x & 1 == 0)
 
 ```cpp
 if (x & 1 == 1)
+```
+
+- Python: reverse a list *l*
+
+```python
+l.reverse()
+```
+
+- Python: store the last element of list *l* into *e*
+
+```python
+e = l[-1]
 ```
