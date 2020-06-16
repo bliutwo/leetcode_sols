@@ -170,13 +170,13 @@ c -= 32;
 c += 32;
 ```
 
-- check if char *c* is upper case alphanumeric
+- check if char *c* is upper case alphabetical
 
 ```cpp
 if (c >= 'A' && c <= 'Z')
 ```
 
-- check if char *c* is lower case alphanumeric
+- check if char *c* is lower case alphabetical
 
 ```cpp
 if (c >= 'a' && c <= 'z')
@@ -247,7 +247,7 @@ map<int, char> m;
 map<char, int> m = { {'a', 0}, {'b', 1}, {'c', 2}, {'d', 3} };
 ```
 
-- add a new entry to `map<int, char> m;` mapping `4` to `d`
+- add a new entry to `map<int, char> m;` mapping `4` to 'd'
 
 ```cpp
 m[4] = 'd';
@@ -847,7 +847,7 @@ s.insert(s.begin(), c);
 char c = '0' + i;
 ```
 
-- Talk it out: How do you check if a really long string is a palindrome (it's the same string if reversed)?
+- Talk it out: How do you check if a really long string is a palindrome (it's the same string if reversed)? WITHOUT recursion
   - Have two pointers to each end of the string. Increment/decrement each one by one until you get to the middle (at which point it's true). If at any point the chars are different, then it's not a palindrome.
 
 - Talk it out: How do you check if a really long string is a palindrome (it's the same string if reversed), if you are able to delete a single character?
