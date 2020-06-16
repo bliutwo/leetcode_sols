@@ -265,7 +265,7 @@ unordered_map<string, int> um;
 map<char, int>::iterator it; for (it = m.begin(); it != m.end(); it++) cout << it->first << ':' << it->second << endl;
 ```
 
-- output each key and value separated by a colon with a new line after each key-value printing for `map<char, int> m` with `auto` but WITHOUT keywords `key` and `val` (and with const ref)
+- output each key and value separated by a colon with a new line after each key-value printing for `map<char, int> m` with `auto` but WITHOUT keywords `key` and `val` (and with const ref) and WITHOUT the use of an explicit iterator
 
 ```cpp
 for (auto const& x : m) cout << x.first << ':' << x.second << endl;
