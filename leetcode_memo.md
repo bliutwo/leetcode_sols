@@ -308,7 +308,7 @@ set<int> s3;
 set_intersection(s1.begin(), s1.end(), s2.begin(), s2.end(), inserter(s3, s3.begin()));
 ```
 
-- Talk it out: How do you store intersection of vectors of integers *v1* and *v2* into vector of integers *v3* (that you will declare)?
+- Talk it out: How do you store intersection of vectors of integers *v1* and *v2* into vector of integers *v3* (that you will declare) WITHOUT duplicates?
   - convert *v1* and *v2* into sets, store their intersection in a new set, and then convert the new set to the new vector *v3*
 
 - Talk it out: Given two lists, return a third list that is the intersection of the two lists, in *O(1)* space (don't consider the third list as part of the space you use) and *O(n)* time. Don't use built-in set intersection functions, and don't convert the lists to sets.
