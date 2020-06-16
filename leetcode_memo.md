@@ -623,13 +623,14 @@ Need a section on useful bit operations, what they do, and when to use them. Use
   - `size()`
   - `top()`
   
-- what are the 6 most useful STL data structures?
+- what are the 7 most useful STL data structures?
   - stack
   - queue
   - deque
   - list
   - vector
   - string
+  - set
   
 - when would you use a STL stack?
 - when would you use a STL queue?
