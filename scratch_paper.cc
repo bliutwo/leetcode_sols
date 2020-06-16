@@ -2,7 +2,10 @@
 using namespace std;
 
 int main() {
-    vector<int> v = {0,1,2,3,4};
-    int x = v.back();
-    cout << x << endl;
+    string s = "412345";
+    char c = '4';
+    size_t i = s.rfind(c);
+    cout << i << endl;
+    i = s.find(c);
+    cout << i << endl;
 }

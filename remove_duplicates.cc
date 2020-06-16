@@ -3,17 +3,20 @@
 using namespace std;
 
 string remove_duplicates(string& s) {
-    if (s.empty()) return s;
-    for (int i = 0; i < s.length() - 1; i++) {
-        if (s.length() == 0) break;
-        char a = s[i];
-        char b = s[i+1];
-        if (a == b) {
-            s.erase(i, 2);
-            i = -1;
+    if (s.empty() || s.length() == 1) return s;
+    string new_string{};
+    new_string += s[0];
+    for (size_t i = 1; i < s.length(); i++) {
+        char curr = s[i];
+        char last = new_string[new_string.length() - 1];
+        if (curr == last) {
+            int erase_index = new_string.length() - 1;
+            new_string.erase(erase_index, 1);
+        } else {
+            new_string += curr;
         }
     }
-    return s;
+    return new_string;
 }
 
 struct Test1 : ::testing::Test {

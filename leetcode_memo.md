@@ -308,9 +308,6 @@ set<int> s3;
 set_intersection(s1.begin(), s1.end(), s2.begin(), s2.end(), inserter(s3, s3.begin()));
 ```
 
-- Talk it out: How do you store intersection of vectors of integers *v1* and *v2* into vector of integers *v3* (that you will declare)?
-  - convert *v1* and *v2* into sets, store their intersection in a new set, and then convert the new set to the new vector *v3*
-
 - Talk it out: Given two lists, return a third list that is the intersection of the two lists, in *O(1)* space (don't consider the third list as part of the space you use) and *O(n)* time. Don't use built-in set intersection functions, and don't convert the lists to sets.
   - First, sort the two lists. Have two pointers (iterators) point to the first elements of the two lists. Declare a new list. While either pointer (iterator) hasn't reached the end of its respective list, if the two elements pointed to by both iterators are equal, add that "equal" element to the new list, and increment the iterators/pointers until you get to a new element in each list. Now that you're pointing to... 
 
@@ -919,3 +916,67 @@ e = l[-1]
 
 - given `string s = "012345";`, what is the output of `reverse(s.begin() + 4, s.begin()); cout << s << endl;`
   - 012345
+
+- delete first character of string *s*
+
+```cpp
+s.erase(0, 1);
+```
+
+- Talk it out: How do check if a string has a balanced number of parentheses via a linear search through the string?
+  - Set a counter *balance* to 0. For each character in the string, if the character is a '(', increment *balance*; if the character is a ')', decrement *balance*; if *balance* is negative at any point during the for loop, return false. At the end, outside of the for loop, check if *balance* is 0.
+
+- Talk it out: what's the general algorithm for removing parentheses in a string in order to make sure the string is valid (has balanced parentheses?), with a minimal number of removals?
+
+
+- Delete all occurrences of char *c* in string *s*
+
+```cpp
+s.erase(remove(s.begin(), s.end(), c), s.end());
+```
+
+- How long does adding, removing, or even changing one character anywhere in a string take? Why?
+  - O(n), because strings are immutable. The entire string is rebuilt for every change.
+
+- How long does it take to check if an item is in a list?
+  - O(n) if linear search, or O(log n) if binary search
+
+- How long does it take to add or remove *not from the end* of a list, vector, or array?
+  - O(n) because the other items are moved up to make a gap or down to fill in the gap.
+
+- Python: what is the output of the following:
+
+```python
+l = [1, 2, 3]
+l.pop()
+print(l)
+```
+
+```
+[1, 2]
+```
+
+- Python: add element *e* to existing list *l*
+
+```python
+l.append(e)
+```
+
+- Talk it out: Given two sparse matrices A and B, how do you calculate the product of the two matrices, C? Give the "smart" solution, and then say why it's smart.
+  - For each value `A[i][k]` in matrix A, if it is not zero, we calculate `A[i][k] * B[k][j]` and accumulate it into `C[ i ][ j ]` (Key part: the `C[ i ][ j ]` by now is not the final value in the result matrix !! Remember, in the brute force solution, the final value of `C[i][j]`, takes sum of all multiplication values of K corresponding values from A and B? here `C[ i ][ j ]` is only sum of some multiplication values, NOT ALL until the program is done ) BY NOW, it is very clear that, if the value `A[ i ][ k ]` from matrix is zero, we skip a For-loop- calculation, which is a loop iterating nB (number of columns in B) times, and this is the key part of why the smart solution is smart!!!
+
+- Talk it out: Given an array *nums* of *n* integers where *n > 1*,  return an array `output` such that `output[i]` is equal to the product of all the elements of `nums` except `nums[i]`. No division allowed, and maximum time taken is *O(n)*. Bonus: do it in *O(1)* space, where `output` doesn't count towards space.
+  - Use three arrays: *L*, *R*, and *output*. `L[i]` will contain the product of all the elements *to the left of the element at index i*. `R[i]` will contain the product of all the elements *to the right of the element at index i*. Finally, `output[i]` will contain `R[i] * L[i]`. This takes *O(n)* because you're looping through the original array three times, or *3n* operations, where *n* is the length of the original array. The *O(1)* space solution is the same, except you use *only* the array *output*, and make it functionally `L`, then functionally `L*R`, which is the same as the *output* array.
+
+- What are some important properties of a BST? (1)
+  1. The inorder traversal of a BST gives us the elements in a sorted order.
+
+- What is another name "amortized time complexity"?
+  - average time complexity
+
+- Talk it out: Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST. Input is (a pointer to) the root node of the tree. Calling `next()` will return the next smallest number in the BST. Calling `hasNext()` will return wheter there is a next smallest number in the BST. Constraints: `next()` and `hasNext()` should run in average *O(1)* time and use *O(h)* memory, where *h* is the height of the tree. Also, give a more obvious solution and explain why it uses more than *O(h)* memory.
+  - In the initialization of the iterator (constructor), initialize an empty stack. Make a helper function that adds all the nodes in the leftmost branch of the tree rooted at `root` to the stack until there is no left child of the "currently pointed to" node.
+  - `hasNext()` just returns if the stack is empty. *O(1)* time.
+  - `next()`: Get the node stored at the top of the stack, which will be the next smallest element. To maintain the invariant that the element on top of the stack will always be the next smallest element, check if the node has a right child. If it *doesn't* have a right child, it's a leaf node, and we don't have to do anything extra other than pop the node off the stack and return its value. If it *does* have a right child, call our helper function on the node's right child. *O(n)* in the worst case, *O(1)* on average because even if we call the helper function, it won't always process *N* nodes.
+  - The stack will only ever take up *O(h)* space.
+  - A more obvious solution is to traverse the tree in order and add each value to an array that we can then traverse with a pointer or index. However, although this is fast with *O(n)* time, it also takes *O(n)* space because the array contains every single element (*n*) instead of the height in elements of the tree (*h*).
