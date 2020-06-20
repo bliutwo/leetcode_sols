@@ -623,14 +623,22 @@ Need a section on useful bit operations, what they do, and when to use them. Use
   - `size()`
   - `top()`
   
-- what are the 7 most useful STL data structures?
+- what are the 8 most useful STL data structures?
   - stack
   - queue
   - deque
+  - priority_queue
   - list
   - vector
   - string
   - set
+
+- what are the 5 most useful methods of an STL priority_queue?
+  - `empty()`
+  - `size()`
+  - `top()`
+  - `push()`
+  - `pop()`
   
 - when would you use a STL stack?
 - when would you use a STL queue?
@@ -713,7 +721,7 @@ l.sort()
 - What is the output of `cout << 5/2 << endl;`
   - 2
   
-- what does `std::vector::back` do?
+- what does `std::vector::back` do? How is it different from `vector::end`?
   - Returns a reference to the last element in the vector. Unlike member vector::end, which returns an iterator just past this element, this function returns a direct reference. Calling this function on an empty container causes undefined behavior.
 
 - store the last element of vector *v* into *x*
@@ -859,8 +867,10 @@ char c = '0' + i;
 if (isalnum(c))
 ```
 
-- List it out, out loud: What are some common mistakes you make while coding that you should check for before submitting your solution? (1)
-  - use `--` instead of `++`, or vice versa
+- List it out, out loud: What are some common mistakes you make while coding that you should check for before submitting your solution? (2)
+  - you often use `--` instead of `++`, or vice versa
+  - you often forget punctuation
+  - you often don't check the problem statement before submitting
   
 - store square root of *x* into double *a* (you will declare *a*)
 
@@ -975,8 +985,11 @@ l.append(e)
 - What are some important properties of a BST? (1)
   1. The inorder traversal of a BST gives us the elements in a sorted order.
 
-- What is another name "amortized time complexity"?
+- What is a term related to "amortized time complexity"?
   - average time complexity
+
+- What's the difference between amortized time complexity and average time complexity?
+  - [stackoverflow answer](https://stackoverflow.com/questions/7333376/difference-between-average-case-and-amortized-analysis/7335098#7335098)
 
 - Talk it out: Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST. Input is (a pointer to) the root node of the tree. Calling `next()` will return the next smallest number in the BST. Calling `hasNext()` will return wheter there is a next smallest number in the BST. Constraints: `next()` and `hasNext()` should run in average *O(1)* time and use *O(h)* memory, where *h* is the height of the tree. Also, give a more obvious solution and explain why it uses more than *O(h)* memory.
   - In the initialization of the iterator (constructor), initialize an empty stack. Make a helper function that adds all the nodes in the leftmost branch of the tree rooted at `root` to the stack until there is no left child of the "currently pointed to" node.
@@ -984,3 +997,48 @@ l.append(e)
   - `next()`: Get the node stored at the top of the stack, which will be the next smallest element. To maintain the invariant that the element on top of the stack will always be the next smallest element, check if the node has a right child. If it *doesn't* have a right child, it's a leaf node, and we don't have to do anything extra other than pop the node off the stack and return its value. If it *does* have a right child, call our helper function on the node's right child. *O(n)* in the worst case, *O(1)* on average because even if we call the helper function, it won't always process *N* nodes.
   - The stack will only ever take up *O(h)* space.
   - A more obvious solution is to traverse the tree in order and add each value to an array that we can then traverse with a pointer or index. However, although this is fast with *O(n)* time, it also takes *O(n)* space because the array contains every single element (*n*) instead of the height in elements of the tree (*h*).
+
+- Python: Given a list *nums* and an integer *k* where 1 <= *k* <= `len(nums)`, return the *kth* largest element.
+
+```python
+return heapq.nlargest(k, nums)[-1]
+```
+
+- if you're traversing a binary tree, what are some edge cases you should always check for? (3)
+  - current node is null
+  - left child is null
+  - right child is null
+
+- Binary Tree Right Side View: Given a binary tree, imagine yourself standing on the *right* side of it, return the values of the nodes you can see ordered from top to bottom. Example: Input: `[1,2,3,null,5,null,4]`, Output: `[1, 3, 4]`
+
+- differences between BFS and DFS? (1)
+  - BFS traverses level by level, and DFS first goes to the leaves.
+
+- how to BFS through a binary tree?
+
+```
+declare a queue
+while the queue is not empty:
+    pop out a node from the front
+    push that node's left child into the queue
+    push that node's right child into the queue
+```
+
+- delete an element in vector *v* at index *i*
+
+```cpp
+v.erase(v.begin() + i);
+```
+
+- delete the second through fourth elements, `v[1]`, `v[2]`, and `v[3]`, in vector *v*
+
+```cpp
+v.erase(v.begin() + 1, v.begin() + 4);
+```
+
+- what kind of problem is merging e-mail accounts?
+  - graph problem: Draw an edge between two emails if they occur in the same account. The problem comes down to finding connected components of this graph.
+
+- What does it mean for a graph to be bipartite? How to determine if a graph is bipartite?
+  - A graph is bipartite if we can split its set of nodes into two independent subsets A and B such that every edge in the graph has one node in A and another node in B.
+  - To determine if a graph is bipartite, color a node one color, then color its connected nodes (neighbors, which are connected by edges) another color. If at any point you want to color a node the opposite color, it's not bipartite.
