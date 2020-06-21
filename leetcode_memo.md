@@ -867,7 +867,7 @@ char c = '0' + i;
 if (isalnum(c))
 ```
 
-- List it out, out loud: What are some common mistakes you make while coding that you should check for before submitting your solution? (2)
+- List it out, out loud: What are some common mistakes you make while coding that you should check for before submitting your solution? (3)
   - you often use `--` instead of `++`, or vice versa
   - you often forget punctuation
   - you often don't check the problem statement before submitting
@@ -1042,3 +1042,6 @@ v.erase(v.begin() + 1, v.begin() + 4);
 - What does it mean for a graph to be bipartite? How to determine if a graph is bipartite?
   - A graph is bipartite if we can split its set of nodes into two independent subsets A and B such that every edge in the graph has one node in A and another node in B.
   - To determine if a graph is bipartite, color a node one color, then color its connected nodes (neighbors, which are connected by edges) another color. If at any point you want to color a node the opposite color, it's not bipartite.
+
+- Talk it out: How do you initialize a set with elements?
+  - Declare the (empty) set, make a vector of the elements, then use the vector to initialize the set.
