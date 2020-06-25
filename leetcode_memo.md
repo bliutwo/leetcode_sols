@@ -989,6 +989,7 @@ l.append(e)
   - average time complexity
 
 - What's the difference between amortized time complexity and average time complexity?
+  - Amortized analysis differs from average-case analysis in that probability is not involved; an amortized analysis guarantees the *average performance of each operation in the worst case.*
   - [stackoverflow answer](https://stackoverflow.com/questions/7333376/difference-between-average-case-and-amortized-analysis/7335098#7335098)
 
 - Talk it out: Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST. Input is (a pointer to) the root node of the tree. Calling `next()` will return the next smallest number in the BST. Calling `hasNext()` will return whether there is a next smallest number in the BST. Constraints: `next()` and `hasNext()` should run in average *O(1)* time and use *O(h)* memory, where *h* is the height of the tree. Also, give a more obvious solution and explain why it uses more than *O(h)* memory.
@@ -1063,4 +1064,9 @@ v.erase(v.begin() + 1, v.begin() + 4);
   
 - Talk it out: A binary matrix means that all elements are 0 or 1. For each individual row of the matrix, this row is sorted in non-decreasing order. Given a row-sorted binary matrix binaryMatrix, return leftmost column index(0-indexed) with at least a 1 in it. If such index doesn't exist, return -1.
   - Binary search each row.
-  - Start at upper right, only move down and left.
+  - Start at upper right, only move left and down.
+
+- Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree. According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”
+  - **Approach 1: Recursive approach**: The approach is pretty intuitive. Traverse the tree in a depth first manner. The moment you encounter either of the nodes p or q, return some boolean flag. The flag helps to determine if we found the required nodes in any of the paths. The least common ancestor would then be the node for which both the subtree recursions return a True flag. It can also be the node which itself is one of p or q and for which one of the subtree recursions returns a True flag. Time: O(N); Space: O(N)
+  - Approach 2: Iterative using parent pointers: If we have parent pointers for each node we can traverse back from p and q to get their ancestors. The first common node we get during this traversal would be the LCA node. We can save the parent pointers in a dictionary as we traverse the tree. Time: O(N); Space: O(N)
+  - Approach 3: Iterative without parent pointers: In the previous approach, we come across the LCA during the backtracking process. We can get rid of the backtracking process itself. In this approach we always have a pointer to the probable LCA and the moment we find both the nodes we return the pointer as the answer. Time: O(N); Space: O(N)
