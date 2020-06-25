@@ -1045,3 +1045,22 @@ v.erase(v.begin() + 1, v.begin() + 4);
 
 - Talk it out: How do you initialize a set with elements?
   - Declare the (empty) set, make a vector of the elements, then use the vector to initialize the set.
+
+- What are the 13 most useful methods of an STL deque?
+  - size()
+  - empty()
+  - front()
+  - back()
+  - operator[]
+  - at()
+  - assign()
+  - push_back()
+  - push_front()
+  - pop_back()
+  - pop_front()
+  - insert()
+  - erase()
+  
+- Talk it out: A binary matrix means that all elements are 0 or 1. For each individual row of the matrix, this row is sorted in non-decreasing order. Given a row-sorted binary matrix binaryMatrix, return leftmost column index(0-indexed) with at least a 1 in it. If such index doesn't exist, return -1.
+  - Binary search each row.
+  - Start at upper right, only move down and left.
