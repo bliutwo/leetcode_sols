@@ -992,6 +992,9 @@ l.append(e)
   - Amortized analysis differs from average-case analysis in that probability is not involved; an amortized analysis guarantees the *average performance of each operation in the worst case.*
   - [stackoverflow answer](https://stackoverflow.com/questions/7333376/difference-between-average-case-and-amortized-analysis/7335098#7335098)
 
+- What is done in an *amortized analysis*?
+  - In an **amortized analysis**, we average the time required to perform a sequence of data-structure operations over all the operations performed. With amortized analysis, we can show that the average cost of an operation is small, if we average over a sequence of operations, even though a single operation within the sequence might be expensive.
+
 - Talk it out: Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST. Input is (a pointer to) the root node of the tree. Calling `next()` will return the next smallest number in the BST. Calling `hasNext()` will return whether there is a next smallest number in the BST. Constraints: `next()` and `hasNext()` should run in average *O(1)* time and use *O(h)* memory, where *h* is the height of the tree. Also, give a more obvious solution and explain why it uses more than *O(h)* memory.
   - In the initialization of the iterator (constructor), initialize an empty stack. Make a helper function that adds all the nodes in the leftmost branch of the tree rooted at `root` to the stack until there is no left child of the "currently pointed to" node.
   - `hasNext()` just returns if the stack is empty. *O(1)* time.
@@ -1019,6 +1022,7 @@ return heapq.nlargest(k, nums)[-1]
 
 ```
 declare a queue
+push the root into the queue
 while the queue is not empty:
     pop out a node from the front
     push that node's left child into the queue
