@@ -1041,7 +1041,7 @@ v.erase(v.begin() + i);
 v.erase(v.begin() + 1, v.begin() + 4);
 ```
 
-- what kind of problem is merging e-mail accounts?
+- what kind of problem is merging e-mail accounts, and how do you solve it?
   - graph problem: Draw an edge between two emails if they occur in the same account. The problem comes down to finding connected components of this graph.
 
 - What does it mean for a graph to be bipartite? How to determine if a graph is bipartite?
@@ -1049,7 +1049,7 @@ v.erase(v.begin() + 1, v.begin() + 4);
   - To determine if a graph is bipartite, color a node one color, then color its connected nodes (neighbors, which are connected by edges) another color. If at any point you want to color a node the opposite color, it's not bipartite.
 
 - Talk it out: How do you initialize a set with elements?
-  - Declare the (empty) set, make a vector of the elements, then use the vector to initialize the set.
+  - (Declare the (empty) set), make a vector of the elements, then use the vector to (initialize the set / ) make a set of the elements.
 
 - What are the 13 most useful methods of an STL deque?
   - size()
