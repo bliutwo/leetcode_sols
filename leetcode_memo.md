@@ -1074,3 +1074,33 @@ v.erase(v.begin() + 1, v.begin() + 4);
   - **Approach 1: Recursive approach**: The approach is pretty intuitive. Traverse the tree in a depth first manner. The moment you encounter either of the nodes p or q, return some boolean flag. The flag helps to determine if we found the required nodes in any of the paths. The least common ancestor would then be the node for which both the subtree recursions return a True flag. It can also be the node which itself is one of p or q and for which one of the subtree recursions returns a True flag. Time: O(N); Space: O(N)
   - Approach 2: Iterative using parent pointers: If we have parent pointers for each node we can traverse back from p and q to get their ancestors. The first common node we get during this traversal would be the LCA node. We can save the parent pointers in a dictionary as we traverse the tree. Time: O(N); Space: O(N)
   - Approach 3: Iterative without parent pointers: In the previous approach, we come across the LCA during the backtracking process. We can get rid of the backtracking process itself. In this approach we always have a pointer to the probable LCA and the moment we find both the nodes we return the pointer as the answer. Time: O(N); Space: O(N)
+
+- Give 2 intuitions for this problem: Given a collection of intervals, merge all overlapping intervals. Example 1: Input: [[1,3],[2,6],[8,10],[15,18]] Output: [[1,6],[8,10],[15,18]] Explanation: Since intervals [1,3] and [2,6] overlaps, merge them into [1,6]. Example 2: Input: [[1,4],[4,5]] Output: [[1,5]] Explanation: Intervals [1,4] and [4,5] are considered overlapping.
+  - Approach 1: Connected Components: If we draw a graph (with intervals as nodes) that contains undirected edges between all pairs of intervals that overlap, then all intervals in each connected component of the graph can be merged into a single interval.
+  - Approach 2: Sorting: If we sort the intervals by their start value, then each set of intervals that can be merged will appear as a contiguous "run" in the sorted list.
+
+- Trie data structure
+
+- declare a pair of int and char called *p*
+
+```cpp
+pair<int, char> p;
+```
+
+- declare and initialize a pair of int and char called *p* with 100 and 'c'
+
+```cpp
+pair<int, char> p(100, 'c');
+```
+
+- given a pair *p1*, declare and initialize *p2* with the same values as *p1* (both of type pair<int, char>)
+
+```cpp
+pair<int, char> p2(p1);
+```
+
+- given a pair *p*, set the first element to 'c' and the second element to '69'
+
+```cpp
+p.first = 'c'; p.second = 69;
+```
