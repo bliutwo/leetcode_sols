@@ -1104,3 +1104,219 @@ pair<int, char> p2(p1);
 ```cpp
 p.first = 'c'; p.second = 69;
 ```
+
+- rightshift variable *x*
+
+```cpp
+x >>= 1;
+```
+
+- rightshift variable *x* until no more set bits
+
+```cpp
+while(x) x >>= 1;
+```
+
+- store last bit of integer *x* into integer *last_bit* (you declare *last_bit*)
+
+```cpp
+int last_bit = x ^ 1; // last_bit contains either 0 or 1
+```
+
+- store maximum possible integer into *i_max* using `numeric_limits`
+
+```cpp
+int i_max = numeric_limits<int>::max();
+```
+
+- store minimum possible integer into *i_min* using `numeric_limits`
+
+```cpp
+int i_min = numeric_limits<int>::min();
+```
+
+- store maximum possible float into *f_max* using `numeric_limits`
+
+```cpp
+float f_max = numeric_limits<float>::max();
+```
+
+- store minimum possible float into *f_min* using `numeric_limits`
+
+```cpp
+float f_min = numeric_limits<float>::min();
+```
+
+- store maximum possible double into *d_max* using `numeric_limits`
+
+```cpp
+double d_max = numeric_limits<double>::max();
+```
+
+- store minimum possible double into *d_min* using `numeric_limits`
+
+```cpp
+double d_min = numeric_limits<double>::min();
+```
+
+- print out log base e of 10
+
+```cpp
+cout << log(10) << endl;
+```
+
+- print out absolute value of integer *x*
+
+```cpp
+cout << abs(x) << endl;
+```
+
+- print out absolute value of float / double *x*
+
+```cpp
+cout << fabs(x) << endl;
+```
+
+- swap values of *x* and *y*
+
+```cpp
+swap(x, y);
+```
+
+- print out *x* with its lowest set bit erased
+
+```cpp
+cout << x & (x - 1) << endl;
+```
+
+- if *x* = (00101100)_2, then what is the result of `x & (x - 1)`?
+
+```
+(00101000)_2
+```
+
+- Talk it out: Write a program that takes a double *x* and an integer *y* and returns `x^y`. You can ignore overflow and underflow. You cannot use built-in libraries. How is your solution better than the brute-force solution? What's the brute-force time complexity, and what's the optimal algorithm time complexity?
+  - Intuition: Generalizing, if the least significant bit of *y* is 0, the result is (x^(y/2))^2; otherwise, it is x \* (x^(y/2))^2. Algorithm: Declare a double result = 1.0. Declare a long long `power` = y. If y is negative, set power to -power, and set x to 1.0 / x. While power still has set bits: { if the last bit of power is set: { result \*= x } x \*= x, rightshift power by 1. } return result. This improves on the brute-force algorithm of multiplying *x* *y* times because it uses fewer multiplications by getting more work done with each multiplication--specifically iterated squaring, i.e. forming x, x^2, (x^2)^2 = x^4, (x^4)^2 = x^8, etc. The brute-force algorithm is O(2^n), while the optimal algorithm is O(n).
+
+- store converted string *s* to long long, into long long i
+
+```cpp
+long long i = stoll(s);
+```
+
+- store converted string *s* to long, into long i
+
+```cpp
+long i = stol(s);
+```
+
+- Write a program that takes an integer and returns the integer corresponding to the digits of the input written in reverse order. For example, the reverse of 42 is 24, and the reverse of -314 is -413. Do this without making a new string. Give the time complexity as a comment.
+
+```cpp
+long long Reverse(int x) {
+    long long result = 0;
+    while (x) {
+        /* If x is negative, x % 10 is the negative of the least significant digit.*/
+        /* For example, -256 % 10 = -6. */
+        result = result * 10 + x % 10;
+        x /= 10;
+    }
+    return result;
+    // Time complexity is O(n), where n is the number of digits in k.
+}
+```
+
+- Talk it out: What's the time complexity to delete the element at index *i* from an array of length *n*? Why?
+  - O(n - i). Deleting an element from an array entails moving all successive elements one over to the left to fill the vacated space. For example, if the array is <2,3,5,7,9,11,13,17>, then deleting the element at index 4 results in the array <2,3,5,7,11,13,17,0>. (We do not care about the last value.)
+
+- Given a pointer to a vector of integers, `vector<int>* A_ptr`, declare a statement that allows you to work with the vector as *A*, as if *A* were a vector declared on the stack.
+
+```cpp
+vector<int>& A = *A_ptr;
+```
+
+- Given a sorted vector *v* of integers, store into boolean *found* whether or not 42 was found using binary search.
+
+```cpp
+bool found = binary_search(v.begin(), v.end(), 42);
+```
+
+- lower_bound
+- upper_bound
+- rotate
+
+- How do you include all standard library functions?
+
+```cpp
+#include <bits/stdc++.h>
+```
+
+- Talk it out: Write a program that takes an array *A* and an index *i* into *A*, and rearranges the elements such that all elements less than *A[i]* (the "pivot") appear first, followed by elements equal to the pivot, followed by elements greater than the pivot. Give a O(n^2) time solution and then give a O(n) time solution.
+  - O(n^2) solution: You'll want to do two passes over the array: one going forwards, one going backwards. In the first pass going forwards from the front, for each element, you'll want to find the first element less than the pivot. Swap the two elements, then break out of the inner loop to move onto the next element. In other words, you'll need two for loops, one for each element going *forwards*, and then one for each element *after* that element. In the second pass going backwards from the back, for each element, you'll want to find the first element greater than the pivot. Swap the two elements, then break out of the inner loop to move onto the next element. In other words, you'll need two for loops, one for each element going *backwards*, and then one for each element *before* that element.
+  - O(n) solution: Make two passes over the array. In the first pass, move all the elements less than the pivot to the beginning. In the second pass, move all the elements greater than the pivot to the end.
+  - Bonus single pass solution: Maintain four subarrays: *bottom* (elements less than pivot), *middle* (elements equal to pivot), *unclassified*, and *top* (elements greater than pivot). Initially, all elements are in *unclassified*. We iterate through elements in *unclassified*, and move elements into one of *bottom*, *middle*, and *top* groups according to the relative order between the incoming unclassified element and the pivot.
+
+- Talk it out: Given an array denoting the daily stock price, where each price corresponds to a single day, return the maximum profit that could be made by buying and then selling one share of the stock. There is no need to buy if no profit is possible. Example: <310, 315, 275, 295, 260, 270, 290, 230, 255, 250>. The maximum profit that can be made with one buy and one sell is 30--buy at 260 and sell at 290. Note that 260 is not the lowest price, nor 290 the highest price. Give a O(n^2) time algorithm, give an O(n log n) time algorithm, then give a O(n) time algorithm.
+  - Brute force, O(n^2): For each pair of indices *i* and *j > i*, if *S[i] - S[i]* is greater than the largest difference seen so far, update the largest difference to *S[j] - S[i]*. Time complexity: The outer loop is invoked *n - 1* times, and the *i*th iteration processes *n - 1 - i* elements. Processing an element entails computing a difference, performing a compare, and possibly updating a vavriable, all of which take constant time. Hence, the run time is proportional to summation from *i = 0* to *n-2* of *(n - 1 - i) = (n - 1)(n)/2*, i.e. the time complexity of the brute-force complexity is *O(n^2)*. Space is *O(1)* additional space because iterators and one floating point variable take up constant space (we don't count the original array).
+  - Divide and conquer, O(n log n): Split *S* into two subarrays, *S[0, floor(n/2)]* and *S[floor(n/2) + 1, n-1]*; compute the best result for the first and second arrays, and combine these results. In the combine step we take the better of the results for the two subarrays. However, we also need to consider the case where the optimum buy and sell take place in separate subarrays. When this is the case, the buy must be in the first subarray, and the sell in the second subarray, since the buy must happen before the sell. If the optimum buy and sell are in different subarrays, the optimum buy price is the minimum price in the first subarray, and the optimum sell price is in the maximum price in the second subarray. We can compute these prices in O(n) time with a single pass over each subarray. Therefore, the time complexity *T(n)* for the divide-and-conquer algorithm satisfies the recurrence relation *T(n) = 2T(n/2) + O(n)*, which solves to O(n log n).
+  - Linear loop, O(n): Intuition: The maximum profit that can be made by selling on a specific day is determined by the minimum of the stock prices over the previous days. Since the maximum profit corresponds to selling on *some* day, the following algorithm correctly computes the maximum profit. Algorithm: Iterate through *S*, keeping track of the minimum element *m* seen thus far. If the difference of the current element and *m* is greater than the maximum profit recorded so far, update the maximum profit. Time and space complexity: O(n) time, since the algorithm performs a constant amount of work per array element. It uses O(1) additional space because it uses two float-valued variables (the minimum element and the maximum profit recorded so far) and an iterator.
+
+- print out a random integer in the range [1,6], inclusive
+
+```cpp
+unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+default_random_engine generator(seed);
+uniform_int_distribution<int> distribution(1, 6);
+cout << distribution(generator) << endl;
+```
+
+- print out a random double in the range [1.3, 2.9], inclusive
+
+```cpp
+unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+default_random_engine generator(seed);
+uniform_real_distribution<double> distribution(1.3, 2.9);
+cout << distribution(generator) << endl;
+```
+
+- print out a random double in the range [0, 1], inclusive
+
+```cpp
+unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+default_random_engine generator(seed);
+cout << generate_canonical<double, 10>(generator) << endl;
+```
+
+- EPI version of random integer generator
+
+```cpp
+
+```
+
+- Talk it out: Implement an algorithm that takes as input an array of distinct elements and a size, and returns a subset of the given size of the array elements. All subsets should be equally likely. Return the result in input array itself.
+  - For each element array[i] in the array up to index *k*, pick a random number *r* from 1 to `array.size`. Swap array[i] with array[r].
+
+- Talk it out: Write a program which takes an *n* x *n* 2D array and returns the spiral ordering of the array.
+  - The important part is that you'll go right, down, left, and up until you either reach (past) the bounds of the matrix, or until you've reached an entry you've already visited. You can represent each of these directions as a pair of ints (i, j) where going in that direction is what you do to *x* and *y*, i.e. *x+i* and *y+j*. You can represent whether you've visited an entry by having a second matrix keeping track of visited, or set a visited entry in the original matrix to a value not in the matrix. The tricky parts are resetting the direction and checking the conditions for whether you've reached those aforementioned bounds.
+
+- Talk it out: Write a program which takes as input an array of digits encoding a nonnegative decimal integer *D* and updates the array to represent the integer *D + 1*. For example, if the input is <1,2,9> then you should update the array to <1,3,0>.
+  - Reverse the array. Declare an integer carry with 0. Make a for loop through each element of the array. Increment the element. If the element is 10, then set that element to 0 and carry to 1. Else, set carry to 0 and break out of the loop. After the for loop, if carry is 1, append a 1 to the array. Reverse the array again. Return the array. Importantly, the edge case you must remember is if the last integer is incremented to 10. Time complexity: O(n).
+
+- Talk it out: To check the validity of a sudoku matrix, what do you need to check?
+  - Check if there are duplicates in three different parts: each row, each column, and each 3x3 region.
+
+- What is the output of: `int i = 0; cout << ++i << endl;`
+  - 1
+
+- What is the output of: `int i = 0; cout << i++ << endl;`
+  - 0
+
+- Is it faster to update a string from the front or back?
+  - back
+
+- string compare
+
+- What do you need to remember when converting a string to an int, and an int to a string, without library help?
+  - `int i = c - '0';`
+  - `char c = i + '0';`
+  - If it's a negative number
