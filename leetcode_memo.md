@@ -1320,3 +1320,15 @@ cout << generate_canonical<double, 10>(generator) << endl;
   - `int i = c - '0';`
   - `char c = i + '0';`
   - If it's a negative number
+
+- store in size_t found the index at which char *c* occurs after but *including* index *i*
+
+```cpp
+size_t found = s.find(c, i);
+```
+
+- store in size_t found the index at which char *c* occurs after but *NOT* including index *i*
+
+```cpp
+size_t found = s.find(c, i+1);
+```
