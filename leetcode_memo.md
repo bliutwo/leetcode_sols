@@ -1344,3 +1344,6 @@ double result = log(x);
 
 - Write a program which takes as input an array of characters, and removes each `b` and replaces each `a` by two `d`s. Input: an array of characters, and an integer indicating the size of the "string." You can assume the array has enough space for all changes to the array relevant to this problem. DO IT IN PLACE, I.E. WITHOUT USING ADDITIONAL SPACE.
   - Make two loops over the array, one going forwards, one going backwards. In the one going forwards, count the number of `a`s while simultaneously shifting the non `b`s over (in effect, removing the `b`s). Using the data from the previous loop (specifically, how many `b`s  you removed) and the number of `a`s there are (and, of course, the original "size" of the array), calculate the final size of the array. Then iterate over the array backwards, building the final array backwards.
+
+- Implement a function for reversing the words in a string *s*. For example, "Alice likes Bob" transforms to "Bob likes Alice".
+  - Reverse the entire string, then reverse each word.
