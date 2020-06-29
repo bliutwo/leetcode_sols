@@ -1332,3 +1332,13 @@ size_t found = s.find(c, i);
 ```cpp
 size_t found = s.find(c, i+1);
 ```
+
+- store the natural logarithm of *x* into [fill in the blank with the appropriate type] *result*
+
+```cpp
+double result = log(x);
+```
+
+- Talk it out: Write a program that performs base conversion. The input is a string, an integer b1, and another integer b2. The string represents an integer in base b1. The output should be the string representing the integer in base b2. Assume 2 <= b1, b2 <= 16. Use "A" to represent 10, "B" for 11, ..., and "F" for 15. Example: Input: s = "615, b1 = 7, b2 = 13; Output: "1A7" since 6x7^2 + 1x7 + 5 = 1x13^2 + 10x13+7).
+  - If b1 == b2 or the original string is "0", return the original string. Check if the first character is a negative sign. If it is, set a boolean to indicate so. You'll use this boolean at the end. Reverse the string. Make two maps mapping 'A' to 10, 'B' to 11, etc., and vice versa. Declare an integer *num*. For each character in the (reversed) string, convert each character to an integer, especially to use the map if it's a letter, and then multiply it by b1^i, where i is the index of the character. Add this result to *num*. After the for loop, declare an empty string. While *num* > 0, initialize an integer *digit* to be *num* mod b2. Do the appropriate checking and conversion with your maps, and add the converted digit to the string. Set *num* = *num* / b2. After the for loop, if the original string was negative, add a '-' to the answer string. Reverse the answer string. Return the answer string.
+
