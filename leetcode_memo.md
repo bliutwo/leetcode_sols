@@ -1072,6 +1072,7 @@ v.erase(v.begin() + 1, v.begin() + 4);
 
 - Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree. According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”
   - **Approach 1: Recursive approach**: The approach is pretty intuitive. Traverse the tree in a depth first manner. The moment you encounter either of the nodes p or q, return some boolean flag. The flag helps to determine if we found the required nodes in any of the paths. The least common ancestor would then be the node for which both the subtree recursions return a True flag. It can also be the node which itself is one of p or q and for which one of the subtree recursions returns a True flag. Time: O(N); Space: O(N)
+    - **Algorithm**: If the root is null or is either p or q, return the root. Recurse with the original function, but using left and right as the new "root" arguments. Store each recursion (left and right) into `TreeNode* left` and `TreeNode* right`. If they're both null, return null. If they're both not null, return root. If only left is null, return right; otherwise, return left.
   - Approach 2: Iterative using parent pointers: If we have parent pointers for each node we can traverse back from p and q to get their ancestors. The first common node we get during this traversal would be the LCA node. We can save the parent pointers in a dictionary as we traverse the tree. Time: O(N); Space: O(N)
   - Approach 3: Iterative without parent pointers: In the previous approach, we come across the LCA during the backtracking process. We can get rid of the backtracking process itself. In this approach we always have a pointer to the probable LCA and the moment we find both the nodes we return the pointer as the answer. Time: O(N); Space: O(N)
 
@@ -1120,40 +1121,40 @@ while(x) x >>= 1;
 - store last bit of integer *x* into integer *last_bit* (you declare *last_bit*)
 
 ```cpp
-int last_bit = x ^ 1; // last_bit contains either 0 or 1
+int last_bit = x & 1; // last_bit contains either 0 or 1
 ```
 
-- store maximum possible integer into *i_max* using `numeric_limits`
+- store maximum possible integer into *i_max* WITHOUT using `INT_MAX`
 
 ```cpp
 int i_max = numeric_limits<int>::max();
 ```
 
-- store minimum possible integer into *i_min* using `numeric_limits`
+- store minimum possible integer into *i_min* WITHOUT using `INT_MIN`
 
 ```cpp
 int i_min = numeric_limits<int>::min();
 ```
 
-- store maximum possible float into *f_max* using `numeric_limits`
+- store maximum possible float into *f_max* WITHOUT using `FLT_MAX`
 
 ```cpp
 float f_max = numeric_limits<float>::max();
 ```
 
-- store minimum possible float into *f_min* using `numeric_limits`
+- store minimum possible float into *f_min* WITHOUT using `FLT_MIN`
 
 ```cpp
 float f_min = numeric_limits<float>::min();
 ```
 
-- store maximum possible double into *d_max* using `numeric_limits`
+- store maximum possible double into *d_max* WITHOUT using `DBL_MAX`
 
 ```cpp
 double d_max = numeric_limits<double>::max();
 ```
 
-- store minimum possible double into *d_min* using `numeric_limits`
+- store minimum possible double into *d_min* WITHOUT using `DBL_MIN`
 
 ```cpp
 double d_min = numeric_limits<double>::min();
@@ -1369,3 +1370,81 @@ double result = log(x);
 
 - Given a binary tree, return the *level order* traversal of its nodes' values. (i.e., from left to right, level by level). Ex: Given binary tree [3,9,20,null,null,15,7], return its level order traversal as: [[3], [9,20], [15,7]].
   - You need two queues for this problem. If the root is NULL, return an empty vector of vector of ints. Otherwise, declare two queues, *parents* and *children*, declare a vector of ints, *v*, which will hold the values of the nodes at a single level, and declare a vector of vectors of ints, *ans*, which will be the end result. Push the root node into the *parents* queue. While either of them have elements, get the front element from the *parents* queue, and pop it off. If its left and right children aren't null, you can push them onto the *children* queue. The most important part of this is when the *parents* queue is empty: when *parents* doesn't have any more elements, you've traversed the entire level. You'll want to do 3 things: 1) set *parents* to *children* so that you can traverse the next level, 2) set *children* to an empty queue, and 3) push the vector of ints of this level *v* onto the resultant vector of vectors of ints, *ans*, and then set the vector of ints *v* to an empty vector. Once both queues are empty, you can return the vector of vectors of ints, *ans*.
+
+- What is RPN? Write a program that takes an arithmetical expression in RPN and returns the number that the expression evaluates to.
+  - Reverse Polish Notation. A string is said to be an arithmetical expression in Reverse Polish notation (RPN) if:
+    1. It is a single digit or a sequence of digits, prefixed with an option -, e.g., "6", "123", "-42".
+    2. It is of the form "A, B, *o*", where A and B are RPN expressions and *o* is one of +, -, x, /.
+    For example, the following strings satisfy these rules: "1729", "3,4,+,2,x,1,+", "1,1,+,-2,x", "-641,6,/,28,/".
+    An RPN expression can be evaluated uniquely to an integer, which is determined recursively. The base case corresponds to Rule (1.), which is an integer expressed in base-10 positional system. Rule (2.) corresponds to the recursive case, and the RPNs are evaluated in the natural way, e.g., if A evalutes to 2 and B evaluates to 3, then "A,B,x" evaluates to 6. Division is integer division, i.e. "7,2,/" evalutes to 3, not 3.5. You can assume the operands to division are always positive.
+  - Process subexpressions, keeping values in a stack. Observe that we need to record partial results, and as we encounter operators, we apply them to the partial results. The partial results are added and removed in last-in, first-out order, which makes a stack the natural data structure for evaluating RPN expressions.
+
+- Write a lambda function that takes as input integers *x* and *y* and outputs their sum. AND use function annotation(s) to indicate that the output should be an integer. Store the function into *func*.
+
+```cpp
+function<int(int, int)> func = [](int x, int y) -> int { return x + y; };
+```
+
+- Declare template types X, Y, and Z
+
+```cpp
+template<typename X, typename Y, typename Z>
+```
+
+- Initialize a (already declared) vector *v* with initial capacity *n*.
+
+```cpp
+v(n);
+```
+
+- Double the capacity of vector *v*.
+
+```cpp
+v.resize(v.size() * 2);
+```
+
+- TODO (8.7 in EPI, [Design Circular Queue](https://leetcode.com/problems/design-circular-queue/) on Leetcode): Implement a queue API using an array for storing elements. Your API should include a constructor function, which takes as argument the initial capacity of the queue, enqueue and dequeue functions, and a function which returns the number of elements stored. Implement dynamic resizing to support storing an arbitrarily large number of elements.
+  - Basically, you'll need a vector, two integer indices to store where the head and tail of the queue are, and an integer to store how many elements are in the queue. When you construct the queue, just initialize the vector to have an initial capacity as requested. When you enqueue an element, if the number of elements in the queue is equal to the capacity of the vector, double the capacity of the vector. The tricky part is how you keep track of the head and tail indices. 
+
+- Given a binary tree, determine if it is height-balanced. For this problem, a height-balanced binary tree is defined as: "a binary tree in which the left and right subtrees of every node differ in height by no more than 1." Example 1: Input: [3,9,20,null,null,15,7]; Output: true. Example 2: Input: [1,2,2,3,3,null,null,4,4]; Output: false.
+  - Top-down recursion: Check the height of each node's tree, starting from the root. The height of a tree is the greater depth between its left and right subtrees. Then check the validity of the heights of the root's left and right subtrees, recursively. O(n log n) time, O(n) space.
+  - Bottom-up recursion: First check if the child subtrees are balanced before comparing their heights. Similar to top-down, but visit the children subtrees first. "Check if the child subtrees are balanced. If they are, use their heights to determine if the current subtree is balanced as well as to calculate the current subtree's height." O(n) time, O(n) space.
+
+- Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center). For example, this binary tree [1,2,2,3,4,4,3] is symmetric, but the following [1,2,2,null,3,null,3] is not.
+  - A tree is symmetric if the left subtree is a mirror reflection of the right subtree. Two trees are a mirror reflection if 1) Their two roots have the same value. 2) The right subtree of each tree is a mirror reflection of the left subtree of the other tree.
+
+- What is the search order for BFS?
+  - left->right; top->bottom
+
+- What are the three search orders for DFS?
+  - postorder, preorder, inorder
+
+- What is the search order for postorder (DFS)?
+  - bottom->top; left->right
+
+- What is the search order for preorder (DFS)?
+  - top->bottom; left->right
+
+- What is the search order for inorder (DFS)?
+  - left->node->right
+
+- In a *preorder* traversal, what is the first element visited?
+  - root
+
+- In an *inorder* traversal, what are the three sections (and order) visited?
+  - left subtree, root, right subtree
+
+- Given preorder and inorder traversal of a tree, construct the binary tree.
+  - The key is that in preorder traversal, the first element is the root. Then you can separate the inorder traversal at the root, where all elements to the left of the root belong in the left subtree and all the elements to the right of the root belong in the right subtree. So using these two lists, you'll go through the preorder list linearly, where each node is the root of its own subtree. You'll use the inorder list to determine whether that node belongs in the left or right subtree.
+
+- Declare a min-heap of strings called *min_heap* where the strings are ordered by size.
+
+```cpp
+priority_queue<string, vector<string>, function<bool(string, string)>> min_heap([](const string& a, const string& b) { return a.length() >= b.length(); });
+```
+
+- Declare a min-heap of ints called *min_heap* where the integers are ordered by size.
+
+```cpp
+priority_queue<int, vector<int>, function<bool(int, int)>> min_heap([](int x, int y) -> int { return x > y; });
+```

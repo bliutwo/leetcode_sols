@@ -2,9 +2,5 @@
 using namespace std;
 
 int main() {
-    int i = 0;
-    char c = i + '0';
-    cout << c << endl;
-    int a = c - '0';
-    cout << a << endl;
+    priority_queue<string, vector<string>, function<bool(string, string)>> min_heap([](const string& a, const string& b) { return a.length() >= b.length(); });
 }
