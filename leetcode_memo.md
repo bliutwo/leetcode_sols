@@ -1099,7 +1099,7 @@ pair<int, char> p(100, 'c');
 pair<int, char> p2(p1);
 ```
 
-- given a pair *p*, set the first element to 'c' and the second element to '69'
+- given a pair *p*, set the first element to 'c' and the second element to 69
 
 ```cpp
 p.first = 'c'; p.second = 69;
@@ -1366,3 +1366,6 @@ double result = log(x);
 
 - Given a singly linked list and an integer *k*, write a program to remove the *k*th last element from the list. Your algorithm cannot use more than a few words of storage, regardless of the length of the list. In particular, you cannot assume that it is possible to record the length of the list.
   - Use two iterators to traverse the list. Advance the first one by *k* steps, and then advance the two iterators in tandem / simultaneously. Once the first one reaches the tail, the second iterator is *at* the *k+1*th last node, and we can remove the *k*th node.
+
+- Given a binary tree, return the *level order* traversal of its nodes' values. (i.e., from left to right, level by level). Ex: Given binary tree [3,9,20,null,null,15,7], return its level order traversal as: [[3], [9,20], [15,7]].
+  - You need two queues for this problem. If the root is NULL, return an empty vector of vector of ints. Otherwise, declare two queues, *parents* and *children*, declare a vector of ints, *v*, which will hold the values of the nodes at a single level, and declare a vector of vectors of ints, *ans*, which will be the end result. Push the root node into the *parents* queue. While either of them have elements, get the front element from the *parents* queue, and pop it off. If its left and right children aren't null, you can push them onto the *children* queue. The most important part of this is when the *parents* queue is empty: when *parents* doesn't have any more elements, you've traversed the entire level. You'll want to do 3 things: 1) set *parents* to *children* so that you can traverse the next level, 2) set *children* to an empty queue, and 3) push the vector of ints of this level *v* onto the resultant vector of vectors of ints, *ans*, and then set the vector of ints *v* to an empty vector. Once both queues are empty, you can return the vector of vectors of ints, *ans*.
