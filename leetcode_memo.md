@@ -1467,3 +1467,9 @@ priority_queue<int, vector<int>, function<bool(int, int)>> min_heap([](int x, in
 
 - Write a program which takes as input a very long sequence of numbers and prints the numbers in sorted order. Each number is at most *k* away from its correctly sorted position. (Such an array is sometimes referred to as being *k*-sorted.) For example, no number in the sequence <-3,-1,2,6,4,5,8> is more than 2 away from its final sorted position.
   - "Sort an Almost-Sorted Array." Intuition: Take advantage of the almost-sorted property. Specifically, after we have read *k+1* numbers, the smallest number in that group must be smaller than all the following numbers. Algorithm: Declare a min_heap (*min_heap*). Add the first *k* elements into the min_heap. Stop if there are fewer than *k* elements. Declare a vector (*result*) to store the result. For every new element, add it to *min_heap* and extract the smallest (into *result*). Once we are done going through the elements in the original array, put all the remaining elements into the *result* vector by repeatedly popping off the *min_heap* until it's empty. Return *result*.
+
+- Implement binary search with function prototype `int binary_search(int t, const vector<int>& A);`.
+
+```cpp
+int binary_search(int t, const vector<int>& A) { int L = 0; int U = A.size() - 1; while (L <= U) { int M = (U - L) / 2 + L; if (A[M] < t) { L = M + 1; } else if (A[M] == t) { return M; } else { U = M - 1; } } return -1; }
+```
