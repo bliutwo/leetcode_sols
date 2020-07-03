@@ -1448,3 +1448,22 @@ priority_queue<string, vector<string>, function<bool(string, string)>> min_heap(
 ```cpp
 priority_queue<int, vector<int>, function<bool(int, int)>> min_heap([](int x, int y) -> int { return x > y; });
 ```
+
+- Write a program that takes as input a set of sorted sequences and computes the union of these sequences as a sorted sequence. For example, if the input is <3, 5, 7>, <0, 6>, and <0, 6, 28>, then the output is <0,0,3,5,6,6,7,28>.
+  - The solution I came up with that uses heaps is to use a min_heap, add each element into the min_heap, and then pop each element in order into a new vector, which we will return. This uses O(n) additional space. The solution in EPI uses a similar approach, but repeatedly picks the smallest element amongst the first element of each of the remaining part of each of the sequences.
+  - The variation on Leetcode is that you can't use any additional space, but the first vector/array contains enough space to contain all the elements from both arrays. In that variation, my solution was to put all the elements from the second array at the end of the first one, and then compare from each subvector (one pointer starting from the beginning, and one pointer starting from the beginning of the newly added elements), swapping elements along the way if they didn't belong.
+
+- Can you copy a `const_iterator` into a regular `iterator`? If not, what should you do instead? Can you increment a / iterate using a `const_iterator`?
+  - No. You should copy a `const_iterator` into another `const_iterator`. You can increment a / iterate using a `const_iterator`.
+
+- In general, how to get the *k* smallest or largest elements of a set of elements?
+  - Put them into a heap, and then pop out the first *k* elements.
+
+- How to get the *k* smallest or largest elements of a set of elements, if there are a *TON* of elements?
+  - Put them into a heap, but only keep *k* elements in the heap at a time. While looping over the elements you need, if the size of the heap becomes *k+1*, pop out the top (max/min, depending on whether it's a max or min heap) element. This obviously saves a ton on space, since you only ever keep track of *k* elements.
+
+- How would you compute the *k* stars which are closest to Earth?
+  - Use a max heap. Loop over all the stars, placing them into the heap. If the size of the heap exceeds *k* (i.e. size == k + 1), pop off the top element (the max element).
+
+- Write a program which takes as input a very long sequence of numbers and prints the numbers in sorted order. Each number is at most *k* away from its correctly sorted position. (Such an array is sometimes referred to as being *k*-sorted.) For example, no number in the sequence <-3,-1,2,6,4,5,8> is more than 2 away from its final sorted position.
+  - "Sort an Almost-Sorted Array." Intuition: Take advantage of the almost-sorted property. Specifically, after we have read *k+1* numbers, the smallest number in that group must be smaller than all the following numbers. Algorithm: Declare a min_heap (*min_heap*). Add the first *k* elements into the min_heap. Stop if there are fewer than *k* elements. Declare a vector (*result*) to store the result. For every new element, add it to *min_heap* and extract the smallest (into *result*). Once we are done going through the elements in the original array, put all the remaining elements into the *result* vector by repeatedly popping off the *min_heap* until it's empty. Return *result*.
