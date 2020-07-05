@@ -1215,6 +1215,42 @@ x = x & (x - 1);
 - Talk it out: Write a program that takes a double *x* and an integer *y* and returns `x^y`. You can ignore overflow and underflow. You cannot use built-in libraries. How is your solution better than the brute-force solution? What's the brute-force time complexity, and what's the optimal algorithm time complexity?
   - Intuition: Generalizing, if the least significant bit of *y* is 0, the result is (x^(y/2))^2; otherwise, it is x \* (x^(y/2))^2. Algorithm: Declare a double result = 1.0. Declare a long long `power` = y. If y is negative, set power to -power, and set x to 1.0 / x. While power still has set bits: { if the last bit of power is set: { result \*= x } x \*= x, rightshift power by 1. } return result. This improves on the brute-force algorithm of multiplying *x* *y* times because it uses fewer multiplications by getting more work done with each multiplication--specifically iterated squaring, i.e. forming x, x^2, (x^2)^2 = x^4, (x^4)^2 = x^8, etc. The brute-force algorithm is O(2^n), while the optimal algorithm is O(n).
 
+- Talk it out: Write a program that takes a double *x* and an integer *y* and returns `x^y`. You can ignore overflow and underflow. You cannot use built-in libraries. What's the intuition for this problem?
+  - Generalizing, if the least significant bit of *y* is 0, the result is (x^(y/2))^2; otherwise, it is x \* (x^(y/2))^2.
+
+- Fill in the blank: Write a program that takes a double *x* and an integer *y* and returns `x^y`. You can ignore overflow and underflow. You cannot use built-in libraries. Algorithm: Declare a double result = **FILL IN THE BLANK HERE**. Declare a long long `power` = y. If y is negative, set power to -power, and set x to 1.0 / x. While power still has set bits: { if the last bit of power is set: { result \*= x } x \*= x, rightshift power by 1. } return result.
+  - 1.0
+
+- Fill in the blank: Write a program that takes a double *x* and an integer *y* and returns `x^y`. You can ignore overflow and underflow. You cannot use built-in libraries. Algorithm: Declare a double result = 1.0. Declare a **FILL IN THE BLANK HERE**. If y is negative, set power to -power, and set x to 1.0 / x. While power still has set bits: { if the last bit of power is set: { result \*= x } x \*= x, rightshift power by 1. } return result.
+  - long long power = y
+
+- Fill in the blank: Write a program that takes a double *x* and an integer *y* and returns `x^y`. You can ignore overflow and underflow. You cannot use built-in libraries. Algorithm: Declare a double result = 1.0. Declare a **FILL IN THE BLANK HERE** `power` = y. If y is negative, set power to -power, and set x to 1.0 / x. While power still has set bits: { if the last bit of power is set: { result \*= x } x \*= x, rightshift power by 1. } return result.
+  - long long
+
+- Fill in the blank: Write a program that takes a double *x* and an integer *y* and returns `x^y`. You can ignore overflow and underflow. You cannot use built-in libraries. Algorithm: Declare a double result = 1.0. Declare a long long `power` = y. If y is **FILL IN THE BLANK HERE**, set power to -power, and set x to 1.0 / x. While power still has set bits: { if the last bit of power is set: { result \*= x } x \*= x, rightshift power by 1. } return result.
+  - negative
+
+- Fill in the blank: Write a program that takes a double *x* and an integer *y* and returns `x^y`. You can ignore overflow and underflow. You cannot use built-in libraries. Algorithm: Declare a double result = 1.0. Declare a long long `power` = y. If y is negative, set power to **FILL IN THE BLANK HERE**, and set x to 1.0 / x. While power still has set bits: { if the last bit of power is set: { result \*= x } x \*= x, rightshift power by 1. } return result.
+  - -power
+
+- Fill in the blank: Write a program that takes a double *x* and an integer *y* and returns `x^y`. You can ignore overflow and underflow. You cannot use built-in libraries. Algorithm: Declare a double result = 1.0. Declare a long long `power` = y. If y is negative, set power to -power, and set x to **FILL IN THE BLANK HERE**. While power still has set bits: { if the last bit of power is set: { result \*= x } x \*= x, rightshift power by 1. } return result.
+  - 1.0 / x
+
+- Fill in the blank: Write a program that takes a double *x* and an integer *y* and returns `x^y`. You can ignore overflow and underflow. You cannot use built-in libraries. Algorithm: Declare a double result = 1.0. Declare a long long `power` = y. If y is negative, set power to -power, and set x to 1.0 / x. While power **FILL IN THE BLANK HERE**: { if the last bit of power is set: { result \*= x } x \*= x, rightshift power by 1. } return result.
+  - still has set bits
+
+- Fill in the blank: Write a program that takes a double *x* and an integer *y* and returns `x^y`. You can ignore overflow and underflow. You cannot use built-in libraries. Algorithm: Declare a double result = 1.0. Declare a long long `power` = y. If y is negative, set power to -power, and set x to 1.0 / x. While power still has set bits: { if **FILL IN THE BLANK HERE**: { result \*= x } x \*= x, rightshift power by 1. } return result.
+  - the last bit of power is set
+
+- Fill in the blank: Write a program that takes a double *x* and an integer *y* and returns `x^y`. You can ignore overflow and underflow. You cannot use built-in libraries. Algorithm: Declare a double result = 1.0. Declare a long long `power` = y. If y is negative, set power to -power, and set x to 1.0 / x. While power still has set bits: { if the last bit of power is set: { **FILL IN THE BLANK HERE** } x \*= x, rightshift power by 1. } return result.
+  - result \*= x
+
+- Fill in the blank: Write a program that takes a double *x* and an integer *y* and returns `x^y`. You can ignore overflow and underflow. You cannot use built-in libraries. Algorithm: Declare a double result = 1.0. Declare a long long `power` = y. If y is negative, set power to -power, and set x to 1.0 / x. While power still has set bits: { if the last bit of power is set: { result \*= x } **FILL IN THE BLANK HERE**, rightshift power by 1. } return result.
+  - x \*= x
+
+- Fill in the blank: Write a program that takes a double *x* and an integer *y* and returns `x^y`. You can ignore overflow and underflow. You cannot use built-in libraries. Algorithm: Declare a double result = 1.0. Declare a long long `power` = y. If y is negative, set power to -power, and set x to 1.0 / x. While power still has set bits: { if the last bit of power is set: { result \*= x } x \*= x, **FILL IN THE BLANK HERE**. } return result.
+  - rightshift power by 1
+
 - store converted string *s* to long long, into long long i
 
 ```cpp
@@ -1227,7 +1263,7 @@ long long i = stoll(s);
 long i = stol(s);
 ```
 
-- Write a program that takes an integer and returns the integer corresponding to the digits of the input written in reverse order. For example, the reverse of 42 is 24, and the reverse of -314 is -413. Do this without making a new string. Give the time complexity as a comment.
+- Write a program that takes an integer *x* and returns the integer corresponding to the digits of the input written in reverse order. For example, the reverse of 42 is 24, and the reverse of -314 is -413. Do this without making a new string. Give the time complexity as a comment.
 
 ```cpp
 long long Reverse(int x) {
@@ -1462,7 +1498,13 @@ priority_queue<string, vector<string>, function<bool(string, string)>> min_heap(
 - Declare a min-heap of ints called *min_heap* where the integers are ordered by size.
 
 ```cpp
-priority_queue<int, vector<int>, function<bool(int, int)>> min_heap([](int x, int y) -> int { return x > y; });
+priority_queue<int, vector<int>, greater<>> min_heap;
+```
+
+- Declare a max-heap of ints called *max_heap* where the integers are ordered by size.
+
+```cpp
+priority_queue<int> max_heap;
 ```
 
 - Write a program that takes as input a set of sorted sequences and computes the union of these sequences as a sorted sequence. For example, if the input is <3, 5, 7>, <0, 6>, and <0, 6, 28>, then the output is <0,0,3,5,6,6,7,28>.
@@ -1489,3 +1531,179 @@ priority_queue<int, vector<int>, function<bool(int, int)>> min_heap([](int x, in
 ```cpp
 int binary_search(int t, const vector<int>& A) { int L = 0; int U = A.size() - 1; while (L <= U) { int M = (U - L) / 2 + L; if (A[M] < t) { L = M + 1; } else if (A[M] == t) { return M; } else { U = M - 1; } } return -1; }
 ```
+
+- Return an iterator to the first element `target` in STL container A
+
+```cpp
+auto it = find(A.begin(), A.end(), target);
+```
+
+- Store into `found` whether `target` is present in sorted STL container A
+
+```cpp
+bool found = binary_search(A.begin(), A.end(), target);
+```
+
+- In STL container A, find the first element that is not less than a targeted value, `target`. In other words, find the first element that is greater than or equal to the target value.
+
+```cpp
+auto it = lower_bound(A.begin(), A.end(), target); // `it` is an iterator
+```
+
+- In STL container A, find the first element that is greater than a targeted value, `target`.
+
+```cpp
+auto it = upper_bound(A.begin(), A.end(), target); // `it` is an iterator
+```
+
+- What does `lower_bound()` do?
+  - Return (an iterator to) the first element greater than or equal to the target value.
+
+- What does `upper_bound()` do?
+  - Return (an iterator to) the first element greater than the target value.
+
+- Write a method that takes a sorted array and a key and returns the index of the *first* occurrence of that key in the array. Return -1 if the key does not appear in the array. Give the naive brute force solution and explain why that doesn't save any time over a linear search, and then give the optimal solution and its time complexity.
+  - The naive solution is to binary search until you hit the key, and then go left until you get a value not equal to the key. The reason that doesn't save any time over a linear search is that in the worst case, you hit the key at the right of the array, but then all of the elements are the same as the key, which means going left until the first element will take total O(n) time. The optimal solution is to do binary search, except that when you hit the key, you eliminate all elements to the right of it and keep proceeding with binary search (because no elements to the right of that one will be the *leftmost* key). One key difference is that, in normal binary search, you return -1 after the while loop if you don't find it, but in this one, you declare a *result* index at the beginning with value -1, and *result* won't change if you never find the key (return *result* at the end). A second key difference is that the element at the middle index *is* equal to the key, you set *result* to that middle index and then set *right* to *mid - 1*.
+
+- Write a program which takes a nonnegative integer and returns the largest integer whose square is less than or equal to the given integer. For example, if the input is 16, return 4; if the input is 300, return 17, since 17^2 = 289 < 300 and 18^2 = 324 > 300. What's the key intuition for this problem?
+  - If x^2 < k, then no number smaller than x can be the result, and if x^2 > k, then no number greater than or equal to x can be the result.
+
+- Design an algorithm for computing the *k*th largest element in an array, where all elements are distinct.
+  - Brute force, O(n log n) time, O(1) additional space solution: sort the array in descending order and return the element at index k - 1.
+  - O(n log k) time, O(k) additional space solution: store a candidate set of *k* elements in a min-heap, and return the top element after looping through the elements.
+  - O(n) time, O(1) additional space solution: Similar to quicksort, select an element at random, the "pivot", and partition the remaining entries into those greater than the pivot and those less than the pivot. Since the problem states all elements are distinct, there cannot be any other elements equal to the pivot. If there are exactly k - 1 elements greater than the pivot, the pivot must be the kth largest element. If there are more than k-1 elements greater than the pivot, we can discard elements less than or equal to the pivot--the k-largest element must be greater than the pivot. If there are less than k-1 elements greater than the pivot, we can discard elements greater than or equal to the pivot.
+
+- An array is said to be cyclically sorted if it is possible to cyclically shift its entries so that it becomes sorted. For example, the array <4,5,0,1,2> is cyclically sorted--a cyclic left shift by 2 leads to a sorted array. Design an O(log n) algorithm for finding the position of the smallest element in a cyclically sorted array. Assume all elements are distinct. For example, in the array mentioned above, your algorithm should return 0.
+  - You'll basically be implementing a variation of binary search. The key points are the following: for any m, if A[m] > A[n - 1] where n is the size of the array, then the minimum value must be an index in the range [m + 1, n - 1]. Conversely, if A[m] < A[n - 1], then no index in the range [m + 1, n - 1] can be the index of the minimum value. The differences in implementation of this algorithm from binary search are that you end when left < right, rather than left <= right, because the loop ends when left == right. The condition is A[mid] > A[right] instead of A[mid] == key in binary search. You set left = mid + 1 if the condition is true, otherwise you set right = mid. At the end, return left.
+
+- Suppose you were given a file containing roughly one billion IP addresses, each of which is a 32-bit quantity. How would you programmatically find an IP address that is not in the file? Assume you have unlimited drive space but only a few megabytes of RAM at your disposal.
+  - You don't want to sort it and then iterate through it, searching for a gap between values, because although time complexity is O(n log n), where n is the number of entries, you'll need to use the disk as storage to keep RAM usage low which means it'll be super slow.
+  - We can't compute the largest entry and add one to it because if the largest entry is 255.255.255.255 (the highest possible IP address), adding one to it will lead to overflow. Same with smallest entry and underflow. (In practice, this would be a good heuristic).
+  - You don't want to add them all to a hash table, since that would take more than half a GB, not to mention additional memory overhead of a hash table can get up to 6 GB in this case.
+  - What you'll want to do is to make multiple passes through the file, where you group IP addresses into categories based on their leading bits. For example, you can count the number of IP addresses whose leading bit is a 1, and count those whose leading bit is a 0. One of these counts must be less than 2^31, since at least one IP address must exist that is not present in the file. Then we can focus our attention on IP addresses in the file that begin with the bit that has a lower count, and continue the process of elimination based on the second bit. This entails 32 passes, and uses only two integer-valued count variables as storage.
+  - Since we have more storage, we can count on groups of bits. Specifically, we can count the number of IP addresses in the file that begin with 0, 1, 2, ..., 2^16 - 1 using an array of 2^16 integers that can be represented with 32 bits.
+  - I'm tired, so you can check out the rest in EPI, problem 11.9, but the process is similar with this array of 2^16 integers.
+
+- Write a program which takes text for an anonymous letter and text for a magazine and determines if it is possible to write the anonymous letter using the magazine. The anonymous letter can be written using the magazine if for each character in the anonymous letter, the number of times it appears in the anonymous letter is no more than the number of times it appears in the magazine.
+  - Make a single pass over the letter, storing the character counts for the letter in a single hash table--keys are characters, and values are the number of times that character appears. Next, we make a pass over the magazine. When processing a character *c*, if *c* appears in the hash table, we reduce its count by 1; we remove it from the hash when its count goes to zero. If the hash becomes empty, we return true. If we reach the end of the magazine and the hash is nonempty, we return false--each of the characters remaining in the hash occurs more times in the letter than the magazine. In the worst case, the letter is not constructible or the last character of the magazine is essentially required. Therefore, the time complexity is O(m + n) where m and n are the number of characters in the letter and magazine, respectively. The space complexity is the size of the hash table constructed in the pass over the letter, i.e., O(L), where L is the number of distinct characters appearing in the letter.
+
+- check if element *x* is in a deque of ints, *q*
+
+```cpp
+if (find(q.begin(), q.end(), x) == q.end())
+```
+
+- store in an iterator *it* an iterator to element *x* from a deque of ints, *q*
+
+```cpp
+deque<int>::iterator it = find(q.begin(), q.end(), x);
+```
+
+- erase element *x* from a deque of ints, *q*
+
+```cpp
+deque<int>::iterator it = find(q.begin(), q.end(), x); q.erase(it);
+```
+
+- is STL list doubly-linked or singly-linked?
+  - doubly-linked
+
+- Given an STL list *l*, store an iterator to the beginning of the list into iterator *it*
+
+```cpp
+list<int>::iterator it = l.begin();
+```
+
+- Given an STL list *l*, store an iterator to the end of the list into iterator *it*
+
+```cpp
+list<int>::iterator it = l.end();
+```
+
+- Given an STL list *l*, store a reverse iterator to the reverse beginning of the list into reverse iterator *rit*
+
+```cpp
+list<int>::reverse_iterator rit = l.rbegin();
+```
+
+- Given an STL list *l*, store a reverse iterator to the reverse end of the list into reverse iterator *rit*
+
+```cpp
+list<int>::reverse_iterator rit = l.rend();
+```
+
+- Check if STL list *l* is empty
+
+```cpp
+if (l.empty())
+```
+
+- Check if STL list *l* has 2 elements
+
+```cpp
+if (l.size() == 2)
+```
+
+- Access a reference to the first element in STL list *l*
+
+```cpp
+l.front();
+```
+
+- Access a reference to the last element in STL list *l*
+
+```cpp
+l.back();
+```
+
+- Put element *x* onto the front of STL list *l*
+
+```cpp
+l.push_front(x);
+```
+
+- Delete the first element of STL list *l*
+
+```cpp
+l.pop_front();
+```
+
+- Put element *x* onto the back of STL list *l*
+
+```cpp
+l.push_back(x);
+```
+
+- Delete the last element of STL list *l*
+
+```cpp
+l.pop_back(x);
+```
+
+- Insert element *x* into STL list *l* at position *i*
+
+```cpp
+l.insert(l.begin() + i, x);
+```
+
+- Delete element from STL list *l* at position *i*
+
+```cpp
+l.erase(l.begin() + i);
+```
+
+- Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following operations: get and put. `get(key)` - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1. `put(key, value)` - Set or insert the value if the key is not already present. When the cache reached its capacity, it should invalidate the least recently used item before inserting a new item. The cache is initialized with a positive capacity. All keys and values are integers.
+  - You'll need an STL list of ints to store the recently used items, an unordered_map of integers to integers to store key-value pairs, and an unordered_map of integers to `list<int>::iterator`s to store the positions of the keys in the STL list of ints. The STL list of ints will store integer keys in order of most recent to least recent. That is, the most recent items will be in the front, and the least recent items will be in the back. `put()` and `get()` are pretty easy, but you'll need a helper function called `use()` in order to keep track of the status of the STL list of ints, a.k.a. the most recently used items.
+  - Constructor: Assign the given capacity to our class variable, capacity.
+  - `put()`: Call helper function `use()` with argument key, then use the unordered_map of integers to integers to set the key and value appropriately.
+  - `get()`: If your unordered_map contains the key, call helper function `use()` with argument key and return the value corresponding to that key. Otherwise, return -1.
+  - `use()`: This is the key function, which takes one argument, key. If the key is in your unordered map of integers to list iterators, erase it from the list using the unordered map of integers to list iterators (we mapped each key to its position in the list [its iterator]). Else if the list size is greater than or equal to the capacity assigned at the beginning, get the element from the back of the list (the oldest element), then pop it off from the back. Erase that old element from our unordered map of integers to integers (keys to values), and erase it from our unordered map of integers to iterators (keys to positions in list). Outside of the if statements, push the given key onto the front of the list. Use the unordered map of integers to iterators (keys to positions in list) to assign the key to an iterator to the beginning of the list.
+
+- People do not like reading text in which a word is used multiple times in a short paragraph. You are to write a program which helps identify such a problem. Write a program which takes as input an array and finds the distance between a closest pair of equal entries. For example, if s = <"All","work","and","no","play","makes","for","no","work","no","fun","and","no","results">, then the second and third occurrences of "no" is the closest pair.
+  - Declare a `min_distance` variable to keep track of what the minimum distance between identical words has been so far, and set it to the maximum value of an integer. Scan through the array. As we scan through the array, for each value seen so far, we store in a hash table the latest index at which it appears. When processing the element, we use the hash table to see the latest index less than the current index holding the same value. Furthermore, during element processing, if we *have* seen the element before, we can use the difference between the latest index and the current index (distance) and compare it to the `min_distance` so far. If it's less than the `min_distance`, update the `min_distance` variable to hold this distance.
+
+- Write a program to test whether the letters forming a string can be permuted to form a palindrome. For example, "edified" can be permuted to form "deified".
+  - The key intuition: If a string has an even length, each character must occur an even number of times. If it has an odd length, all but one character must occur an even number of times.
+
+- Write a program which takes as input two sorted arrays, and returns a new array containing elements that are present in both of the input arrays. The input arrays may have duplicate entries, but the returned array should be free of duplicates. For example, the input is <2,3,3,5,5,6,7,7,8,12> and <5,5,6,8,8,9,10,10>, your output should be <5,6,8>.
+  - Declare an answer array. Go through the two arrays A and B simultaneously in increasing order, using index variables i and j. While i < size of A and j < size of B: { If the two elements from each array match, AND (i == 0 OR A[i-1] != A[i]), add the element to the answer array, and increment i and j. Else if A[i] < B[j], increment i. Else, increment j. }. Return the answer array.
