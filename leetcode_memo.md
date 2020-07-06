@@ -795,8 +795,8 @@ m.erase(key);
     - its base class (if any) is itself also a *standard-layout class*. And,
     - has no base classes of the same type as its first non-static data member.
 
-- What are two ways to traverse a binary search tree?
-  - 1) recursively, 2) using a stack
+- What are two ways to traverse a binary search tree? (2 parts for each way)
+  - 1) DFS, or recursively, 2) BFS, or using a stack (iteratively)
 
 - What's it called when you eliminate an entire subtree from being required to be searched?
   - pruning
@@ -1347,7 +1347,7 @@ cout << generate_canonical<double, 10>(generator) << endl;
 ```
 
 - Talk it out: Implement an algorithm that takes as input an array of distinct elements and a size, and returns a subset of the given size of the array elements. All subsets should be equally likely. Return the result in input array itself.
-  - For each element array[i] in the array up to index *k*, pick a random number *r* from 1 to `array.size`. Swap array[i] with array[r].
+  - For each element array[i] in the array up to index *k*, pick a random number *r* from 0 to `array.size - 1`. Swap array[i] with array[r].
 
 - Talk it out: Write a program which takes an *n* x *n* 2D array and returns the spiral ordering of the array.
   - The important part is that you'll go right, down, left, and up until you either reach (past) the bounds of the matrix, or until you've reached an entry you've already visited. You can represent each of these directions as a pair of ints (i, j) where going in that direction is what you do to *x* and *y*, i.e. *x+i* and *y+j*. You can represent whether you've visited an entry by having a second matrix keeping track of visited, or set a visited entry in the original matrix to a value not in the matrix. The tricky parts are resetting the direction and checking the conditions for whether you've reached those aforementioned bounds.
@@ -1707,3 +1707,46 @@ l.erase(l.begin() + i);
 
 - Write a program which takes as input two sorted arrays, and returns a new array containing elements that are present in both of the input arrays. The input arrays may have duplicate entries, but the returned array should be free of duplicates. For example, the input is <2,3,3,5,5,6,7,7,8,12> and <5,5,6,8,8,9,10,10>, your output should be <5,6,8>.
   - Declare an answer array. Go through the two arrays A and B simultaneously in increasing order, using index variables i and j. While i < size of A and j < size of B: { If the two elements from each array match, AND (i == 0 OR A[i-1] != A[i]), add the element to the answer array, and increment i and j. Else if A[i] < B[j], increment i. Else, increment j. }. Return the answer array.
+
+- Write a program which takes as input two sorted arrays of integers, and updates the first to the combined entries of the two arrays in sorted order. Assume the first array has enough empty entries at its end to hold the result.
+  - English explanation: Basically, have two pointers to the last element of each array, and have a pointer to the end of the (unfilled part of) the first array. Compare the pointed-to elements in each array, starting from the end. Whichever element is greater, that element belongs at the end of the overall array (pointed to by the third pointer), so write that element at the end of the overall array. Decrement the pointer of the array from which the greater element came from, and decrement the end-array pointer. This will put all the greatest elements in order, starting from the end. You'll stop once either of the first two pointers points past the first element in either array. Once this happens, if the pointer of the second array isn't pointing past its first element, put all the remaining elements of the second array into the remaining empty slots of the first array until it does point past the second array's first element.
+  - Pseudocode algorithm: Let A be the first array, and B be the second array. Let m be the number of elements originally in A, and n be the number of elements originally in B. Set index i equal to m - 1. Set index j equal to n - 1. Set k equal to m + n - 1; While both i and j are greater than or equal to 0, { If A[i] > B[j], A[k] = A[i]. Decrement k, decrement i. Else, A[k] = B[j]. Decrement k, decrement j. }. While j is greater than or equal to 0, { A[k] = B[j]. Decrement k, decrement j. }.
+
+- For `set` and `map`, the iterator returned by `begin()` traverses keys in ascending order. (To iterate over keys in descending order, use `rbegin()`.)
+- For `set` and `map`, `*begin()/*rbegin()` yield the smallest and largest keys in the BST.
+- For {{c1::`set` and `map`}}, `lower_bound(x)/upper_bound(x)` return the first element that is greater than or equal to x / first element greater than the argument x.
+- For `set` and `map`, `equal_range(x)` return the range of values equal to the argument x.
+
+- Definition of a binary search tree:
+  - The left subtree of a node contains only nodes with keys less than the node's key.
+  - The right subtree of a node contains only nodes with keys greater than the node's key.
+  - Both the left and right subtrees must also be binary search trees.
+
+- To validate if a binary tree is a valid binary search tree:
+  - Intuition: Do an in-order traversal, and make sure that each node is less than the previously visited node.
+  - Algorithm: If the root is null, return true. (We are about to do an in-order traversal.) Declare an empty stack. Declare a `pre` TreeNode, and set it to null. While root is not null OR the stack is not empty: { While root is not null: { Push the root onto the stack. Set root to its left child. (We are traversing the left branch of the tree/subtree, putting all the left nodes along the left branch of the tree/subtree into the stack.) } Set root to the top of the stack, and pop off the top of the stack. If `pre` is not null and root.val <= pre.val, return false. Set pre to root. Set root to its right child. } If you reach this point outside the while loop, return true.
+
+- To find the first element greater than a search query *x* in a BST:
+  - Declare a null node pointer *first_so_far* that we will return at the end.
+  - Go through the tree starting from the root, comparing each node's value to the query.
+    - If the node's value is greater than the query *x*, set *first_so_far* to this node, and go into the left subtree by setting node to node->left.
+    - Otherwise, this node's value and all the values of the nodes in its left subtree are less than or equal to our query *x*, so traverse the right subtree by setting node to node->right.
+  - Return *first_so_far*.
+
+- Write a program that takes as input a BST and an integer *k*, and returns the *k* largest elements in the BST in decreasing order.
+  - Perform a reverse in-order traversal, and stop once you have visited *k* nodes.
+  - To perform said traversal, recurse first on the right subtree and then on the left subtree.
+
+- Solve the Towers of Hanoi problem, where the function prototype is `vector<vector<int>> ComputeTowerHanoi(int num_rings)`. You have three pegs to use.
+  - Algorithm Big idea: Let's number each peg as P1, P2, and P3. 1) Move all but the lowest ring from P1 to P3 using P2 as an intermediary. 2) Move the lowest ring from P1 to P2. 3) Move the rings from P3 to P2 using P1. 4) Solved!
+  - How to represent the things you need: To represent the pegs and their rings, you'll need an array of size 3 (number of pegs) in which the elements are stacks of integers, where the integers represent the rings.
+
+- Declare an empty array of size `kNumPegs` called `pegs` in which the elements are stacks of integers.
+
+```cpp
+array<stack<int>, kNumPegs> pegs;
+```
+
+- A nonattacking placement of queens is one in which no two queens are in the same row, column, or diagonal. Write a program which returns all distinct nonattacking placements of *n* queens on an *n x n* chessboard, where *n* is an input to the program.
+  - How to represent the things you need: You can actually represent all positions using an array of size *n*, where the *i*th entry is the location of the queen on row *i*. That is, j = array[i], where (i, j) is a position on the board.
+  - Algorithm big idea: Keep filling in each entry in the array, while checking if there are conflicts. If there's a conflict, backtrack. If you get a full array with no conflicts, that's a solution.
