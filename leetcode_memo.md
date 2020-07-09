@@ -6,7 +6,7 @@ This is a list of things you should memorize in order to complete leetcode probl
 
 **NOTE**: All cards are written for C++, unless specified to be for Python.
 
-[Anki collection](https://drive.google.com/file/d/1hGu1aEWVE_ieuclmBrak6Rv3l5079fkC/view?usp=sharing)
+[Anki collection (7-9-20)](https://drive.google.com/file/d/1hGu1aEWVE_ieuclmBrak6Rv3l5079fkC/view?usp=sharing)
 
 [(Old) Text file](https://drive.google.com/file/d/1MgthutGnuFLUzl3uMxvAT7J4f5kfKHLY/view?usp=sharing) containing notes. Can be converted into cards/notes using [Quizlet](https://help.quizlet.com/hc/en-us/articles/360029977151-Creating-sets-by-importing-content) or [Anki](https://docs.ankiweb.net/#/importing).
 
