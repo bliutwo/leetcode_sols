@@ -352,7 +352,7 @@ vector<int> v3; set_intersection(v1.begin(), v1.end(), v2.begin(), v2.end(), bac
 
 - when to use `priority_queue`
 - when to use `heap`
-- store bigger of two integers *i* and *j* into integer *a*
+- store bigger of two integers *i* and *j* into integer *a* WITHOUT using `max()`
 
 ```cpp
 int a = i > j ? i : j;
@@ -1377,7 +1377,7 @@ cout << generate_canonical<double, 10>(generator) << endl;
   - `char c = i + '0';`
   - If it's a negative number
 
-- store in size_t found the index at which char *c* occurs after but *including* index *i*
+- store in size_t found the index at which char *c* occurs in string *s* after but *including* index *i*
 
 ```cpp
 size_t found = s.find(c, i);
