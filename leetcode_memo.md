@@ -220,7 +220,7 @@ if (c >= 'a' && c <= 'z')
   - O(1) -> average, O(n) -> worst case
 
 - what is the deletion time of map?
-  - log(n) + rebalance
+  - log(n) + rebalance, which, in a red-black tree, takes log(n) time
 
 - what is the deletion time of unordered_map?
   - O(1) -> average, O(n) -> worst case
@@ -819,7 +819,7 @@ if(is_sorted(v.begin(), v.end()))
 - Talk it out: How do you find the diameter of a binary tree, where the diameter is the length of the **longest** path between any two nodes in a tree?
   - For every node, length of longest path which pass it = MaxDepth of its left subtree + MaxDepth of its right subtree. Make sure you have a variable keeping track of the maximum depth you've seen so far.
 
-- How to represent the greatest double possible?
+- How to represent the greatest double possible WITHOUT numeric_limits?
 
 ```cpp
 double maximum = DBL_MAX;
@@ -837,7 +837,7 @@ double minimum = DBL_MIN;
 int maximum = INT_MAX;
 ```
 
-- How to represent the smallest integer possible?
+- How to represent the smallest integer possible? (WITHOUT numeric_limits)
 
 ```cpp
 int minimum = INT_MIN;
@@ -1396,7 +1396,7 @@ double result = log(x);
 ```
 
 - Talk it out: Write a program that performs base conversion. The input is a string, an integer b1, and another integer b2. The string represents an integer in base b1. The output should be the string representing the integer in base b2. Assume 2 <= b1, b2 <= 16. Use "A" to represent 10, "B" for 11, ..., and "F" for 15. Example: Input: s = "615, b1 = 7, b2 = 13; Output: "1A7" since 6x7^2 + 1x7 + 5 = 1x13^2 + 10x13+7).
-  - If b1 == b2 or the original string is "0", return the original string. Check if the first character is a negative sign. If it is, set a boolean to indicate so. You'll use this boolean at the end. Reverse the string. Make two maps mapping 'A' to 10, 'B' to 11, etc., and vice versa. Declare an integer *num*. For each character in the (reversed) string, convert each character to an integer, especially to use the map if it's a letter, and then multiply it by b1^i, where i is the index of the character. Add this result to *num*. After the for loop, declare an empty string. While *num* > 0, initialize an integer *digit* to be *num* mod b2. Do the appropriate checking and conversion with your maps, and add the converted digit to the string. Set *num* = *num* / b2. After the for loop, if the original string was negative, add a '-' to the answer string. Reverse the answer string. Return the answer string.
+  - If b1 == b2 or the original string is "0", return the original string. Check if the first character is a negative sign. If it is, set a boolean to indicate so. You'll use this boolean at the end. Reverse the string. Make two maps mapping 'A' to 10, 'B' to 11, etc., and vice versa. Declare an integer *num*. For each character in the (reversed) string, convert each character to an integer, especially to use the map if it's a letter, and then multiply it by b1^i, where i is the index of the character. Add this result to *num*. After the for loop, declare an empty string. While *num* > 0, initialize an integer *digit* to be *num* mod b2. Do the appropriate checking and conversion with your maps, and add the converted digit to the string. Set *num* = *num* / b2. After the while loop, if the original string was negative, add a '-' to the answer string. Reverse the answer string. Return the answer string.
 
 - Write a program which takes as input an array of characters, and removes each `b` and replaces each `a` by two `d`s. Input: an array of characters, and an integer indicating the size of the "string." You can assume the array has enough space for all changes to the array relevant to this problem. DO IT IN PLACE, I.E. WITHOUT USING ADDITIONAL SPACE.
   - Make two loops over the array, one going forwards, one going backwards. In the one going forwards, count the number of `a`s while simultaneously shifting the non `b`s over (in effect, removing the `b`s). Using the data from the previous loop (specifically, how many `b`s  you removed) and the number of `a`s there are (and, of course, the original "size" of the array), calculate the final size of the array. Then iterate over the array backwards, building the final array backwards.
@@ -1753,3 +1753,15 @@ array<stack<int>, kNumPegs> pegs;
 - A nonattacking placement of queens is one in which no two queens are in the same row, column, or diagonal. Write a program which returns all distinct nonattacking placements of *n* queens on an *n x n* chessboard, where *n* is an input to the program.
   - How to represent the things you need: You can actually represent all positions using an array of size *n*, where the *i*th entry is the location of the queen on row *i*. That is, j = array[i], where (i, j) is a position on the board.
   - Algorithm big idea: Keep filling in each entry in the array, while checking if there are conflicts. If there's a conflict, backtrack. If you get a full array with no conflicts, that's a solution.
+
+- convert an existing string *s* into all lowercase letters
+
+```cpp
+transform(s.begin(), s.end(), s.begin(), ::tolower);
+```
+
+- convert an existing string *s* into all uppercase letters
+
+```cpp
+transform(s.begin(), s.end(), s.begin(), ::toupper);
+```
