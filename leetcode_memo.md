@@ -817,7 +817,8 @@ if(is_sorted(v.begin(), v.end()))
 ```
 
 - Talk it out: How do you find the diameter of a binary tree, where the diameter is the length of the **longest** path between any two nodes in a tree?
-  - Declare a variable *d* to contain the diameter of the tree. Call a helper function called *depth()* that returns an integer with arguments: root and *d*. Pass *d* by reference. Return *d*. This ends the main function. In the helper function *depth()*, if the root is NULL, return 0. Declare two integers, *left* and *right*, which both call the helper function *depth* on the root's left and right nodes. Set *d* to the maximum between *d* and the sum of left and right. Return the maximum of left and right plus 1. This ends the helper function *depth()*.
+  - Intuition: Any path can be written as two arrows (in different directions) from some node, where an arrow is a path that starts at some node and only travels down to child nodes. If we knew the maximum length arrows L, R for each child, then the best path touches L + R + 1 nodes.
+  - Algorithm: Declare a variable *d* to contain the diameter of the tree. Call a helper function called *depth()* that returns an integer with arguments: root and *d*. Pass *d* by reference. Return *d*. This ends the main function. In the helper function *depth()*, if the root is NULL, return 0. Declare two integers, *left* and *right*, which both call the helper function *depth* on the root's left and right nodes. Set *d* to the maximum between *d* and the sum of left and right. Return the maximum of left and right plus 1. This ends the helper function *depth()*.
 
 - How to represent the greatest double possible WITHOUT numeric_limits?
 
