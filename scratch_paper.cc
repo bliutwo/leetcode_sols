@@ -2,8 +2,9 @@
 using namespace std;
 
 int main() {
-    string s = "Brian";
-    cout << s << endl;
-    transform(s.begin(), s.end(), s.begin(), ::tolower);
-    cout << s << endl;
+    char c = '4';
+    int i = c - '0';
+    char d = i + '0';
+    cout << i << endl;
+    cout << d << endl;
 }

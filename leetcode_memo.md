@@ -64,10 +64,16 @@ v1.insert( v1.end(), v2.begin(), v2.end() );
 
 Convert an int to a string or a string to an int:
 
-- convert char *c* to int *i*
+- convert [char *c* to int *i*](https://stackoverflow.com/questions/5029840/convert-char-to-int-in-c-and-c)
 
 ```cpp
 int i = c - '0';
+```
+
+- convert int *i* to char *c*
+
+```cpp
+char c = i + '0';
 ```
 
 - convert string *s* to int *num*
@@ -75,9 +81,6 @@ int i = c - '0';
 ```cpp
 int num = stoi(s);
 ```
-  
-- convert a [char to an int](https://stackoverflow.com/questions/5029840/convert-char-to-int-in-c-and-c)
-  - looks like you can't do this on leetcode because you'll get a runtime error
 
 - store into int *i* the index of the place of char *c* in the alphabet (e.g. `'a' -> 0`, `'b' -> 1`, etc.)
 
@@ -826,7 +829,7 @@ if(is_sorted(v.begin(), v.end()))
 double maximum = DBL_MAX;
 ```
 
-- How to represent the smallest double possible?
+- How to represent the smallest double possible WITHOUT numeric_limits?
 
 ```cpp
 double minimum = DBL_MIN;
