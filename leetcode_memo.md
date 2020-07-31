@@ -1814,3 +1814,6 @@ Algorithm:
   - Complexity analysis
     - Time: `O(M + N)`, where `M, N` are lengths of `A` and `B` respectively.
     - Space: `O(M + N)`, the maximum size of the answer, or, if you don't count output as part of the space complexity, `O(1)`.
+
+- Problem Statement: [https://i.imgur.com/uXjrozu.png](https://i.imgur.com/uXjrozu.png)
+  - High-level solution: We pass the minimum and maximum values to the children. At the leaf node, we return `max - min` through the path from the root to the leaf.
