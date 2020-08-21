@@ -1817,3 +1817,9 @@ Algorithm:
 
 - Problem Statement: [https://i.imgur.com/uXjrozu.png](https://i.imgur.com/uXjrozu.png)
   - High-level solution: We pass the minimum and maximum values to the children. At the leaf node, we return `max - min` through the path from the root to the leaf.
+
+- Remove all instances of char *c* from string *s*
+
+```
+s.erase(remove(s.begin(), s.end(), c), s.end());
+```
